@@ -8,7 +8,7 @@ const QuestionBox = props => {
           <div className="content">
             <div className="meta">Question</div>
             <div className="description" />
-            {props.QuestionFromAPI}
+            <p>{props.questionStr}</p>
           </div>
         </div>
       </div>

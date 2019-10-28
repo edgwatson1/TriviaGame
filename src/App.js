@@ -50,7 +50,7 @@ function LandingPage() {
       <h2>Landing Page</h2>
       <p>Here are somabout the game</p>
       <Link to="/CategoryWheel">
-        <button class="ui button">Play!</button>
+        <button className="ui button">Play!</button>
       </Link>
     </div>
   );
@@ -61,7 +61,7 @@ function CategoryWheel() {
     <>
       <h2>Click to spin the wheel!</h2>
       <Link to="/Challenge">
-        <button class="ui button">Spin!</button>
+        <button className="ui button">Spin!</button>
       </Link>
     </>
   );
@@ -70,7 +70,10 @@ function CategoryWheel() {
 function ChallengeRenderer() {
   return (
     <>
-      <Challenge Information="this is some info" /> 
+      <Challenge
+        Information="this is some info"
+        questionsPackages={questionArray}
+      />
     </>
   );
 }
@@ -79,16 +82,16 @@ function Scoreboard() {
   return (
     <div>
       <h1>Scoreboard</h1>
-      <p>{questionArray}</p>
-    <p>You scored 800 points, you are Bowser. Keep going to be Mario!</p>
+      <p>some writing</p>
+      <p>You scored 800 points, you are Bowser. Keep going to be Mario!</p>
       <Link to="/CategoryWheel">
-        <button class="ui button">Continue</button>
+        <button className="ui button">Continue</button>
       </Link>
     </div>
   );
 }
 
-  const questionArray = [
+const questionArray = [
   {
     category: "General Knowledge",
     type: "multiple",
@@ -541,8 +544,4 @@ function Scoreboard() {
     correct_answer: "Yellow",
     incorrect_answers: ["Green", "Red", "Blue"]
   }
-
-]
-
-
-console.log(questionArray[Math.floor(Math.random() * Math.floor(50))].question);
+];
