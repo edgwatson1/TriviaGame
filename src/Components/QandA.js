@@ -3,6 +3,8 @@ import QuestionBox from "./QuestionBox";
 import AnswerButs from "./AnswerButs";
 
 const QandA = props => {
+  const questionPackage = props.questionPackage;
+
   return (
     <div>
       <p>This is the Q&A container</p>
@@ -12,7 +14,7 @@ const QandA = props => {
             <div className="meta">...</div>
 
             <div className="question">
-              <QuestionBox QuestionFromAPI="Did this question come from the API?" />
+              <QuestionBox questionStr={questionPackage.question} />
             </div>
 
             <AnswerButs />
