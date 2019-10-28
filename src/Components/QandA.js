@@ -5,6 +5,14 @@ import AnswerButs from "./AnswerButs";
 const QandA = props => {
   const questionPackage = props.questionPackage;
 
+  const correctAnswerPosition1 = Math.floor(Math.random() * Math.floor(4));
+  const answersArray = questionPackage.incorrect_answers;
+  const emptyMixer = answersArray.splice(
+    correctAnswerPosition1,
+    0,
+    questionPackage.correct_answer
+  );
+
   return (
     <div>
       <p>This is the Q&A container</p>
@@ -12,12 +20,10 @@ const QandA = props => {
         <div className="card">
           <div className="content">
             <div className="meta">...</div>
-
             <div className="question">
               <QuestionBox questionStr={questionPackage.question} />
+              <AnswerButs mixedAnswers={answersArray} />
             </div>
-
-            <AnswerButs />
           </div>
         </div>
       </div>

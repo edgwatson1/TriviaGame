@@ -1,6 +1,14 @@
 import React from "react";
 
 const AnswerButs = props => {
+  const success = butId => {
+    if (butId == 122) {
+      alert("well done!");
+    } else {
+      alert("bad luck!");
+    }
+  };
+
   return (
     <>
       <div className="ui cards">
@@ -10,17 +18,21 @@ const AnswerButs = props => {
               <div className="ui four column grid">
                 <div className="row">
                   <div className="column">
-                    <button className="ui button">The King of England</button>
+                    <button onClick={success(123)} className="ui button">
+                      {props.mixedAnswers[0]}
+                    </button>
                   </div>
                   <div className="column">
-                    <button className="ui button">The Princess Diaries</button>
+                    <button className="ui button">
+                      {props.mixedAnswers[1]}
+                    </button>
                   </div>
                 </div>
                 <div className="column">
-                  <button className="ui button">Royal Family Party</button>
+                  <button className="ui button">{props.mixedAnswers[2]}</button>
                 </div>
                 <div className="column">
-                  <button className="ui button">Kings of Leon</button>
+                  <button className="ui button">{props.mixedAnswers[3]}</button>
                 </div>
               </div>
             </div>
@@ -29,6 +41,7 @@ const AnswerButs = props => {
           </div>
         </div>
       </div>
+      <h1>{success}</h1>
     </>
   );
 };
