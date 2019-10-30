@@ -1,15 +1,47 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
+import LandingPage from "./Pages/LandingPage";
+import CategoryWheel from "./Pages/CategoryWheel";
+import Scoreboard from "./Pages/Scoreboard";
 
-export default function App() {
+// App component
+
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      category: "",
+      questionPackages: []
+    }
+  }
+
+  fetchQuestions = () => {
+    const randomCategory = (Math.floor(Math.random() * Math.floor(24)) + 9);
+    console.log(randomCategory);
+  
+    fetch(`https://opentdb.com/api.php?amount=10&category=${randomCategory}`)
+      .then(res => res.json())
+      .then(results => {
+        this.setState({
+          questionPackages: results,
+          category: results.results[0].category
+        });
+      })
+    };
+
+  render() { 
+    // console.log(this.state.questionPackages);
+    // console.log(this.state.category);
   return (
     <Router>
       <div>
         <nav>
+    
           <ul>
             <li>
               <Link to="/">LandingPage</Link>
+       
             </li>
             <li>
               <Link to="/CategoryWheel">CategoryWheel</Link>
@@ -30,10 +62,13 @@ export default function App() {
             <LandingPage />
           </Route>
           <Route exact path="/CategoryWheel">
-            <CategoryWheel />
+            <CategoryWheel fetchQuestions={this.fetchQuestions} categoryName={this.state.category}/>
           </Route>
           <Route exact path="/Challenge">
-            <ChallengeRenderer />
+          <Challenge
+            Information="this is some info"
+            questionsPackages={questionArray}
+          />
           </Route>
           <Route exact path="/Scoreboard">
             <Scoreboard />
@@ -42,54 +77,10 @@ export default function App() {
       </div>
     </Router>
   );
+ }
 }
 
-function LandingPage() {
-  return (
-    <div>
-      <h2>Landing Page</h2>
-      <p>Here are somabout the game</p>
-      <Link to="/CategoryWheel">
-        <button className="ui button">Play!</button>
-      </Link>
-    </div>
-  );
-}
-
-function CategoryWheel() {
-  return (
-    <>
-      <h2>Click to spin the wheel!</h2>
-      <Link to="/Challenge">
-        <button className="ui button">Spin!</button>
-      </Link>
-    </>
-  );
-}
-
-function ChallengeRenderer() {
-  return (
-    <>
-      <Challenge
-        Information="this is some info"
-        questionsPackages={questionArray}
-      />
-    </>
-  );
-}
-
-function Scoreboard() {
-  return (
-    <div>
-      <h1>Scoreboard</h1>
-      <p>some writing</p>
-      <p>You scored 800 points, you are Bowser. Keep going to be Mario!</p>
-      <Link to="/CategoryWheel">
-        <button className="ui button">Continue</button>
-      </Link>
-    </div>
-  );
-}
+// Dummy questions array
 
 const questionArray = [
   {
@@ -544,4 +535,7 @@ const questionArray = [
     correct_answer: "Yellow",
     incorrect_answers: ["Green", "Red", "Blue"]
   }
-];
+]
+
+
+export default App
