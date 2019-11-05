@@ -13,8 +13,10 @@ class App extends React.Component{
     this.state = {
       category: "",
       questionPackages: placeholderData,
+      //see placeholderData at the bottom of the page
     }
   }
+
 
   fetchQuestions = () => {
     const randomCategory = (Math.floor(Math.random() * Math.floor(24)) + 9);
@@ -29,6 +31,7 @@ class App extends React.Component{
         });
       })
     };
+
 
   render() { 
     // console.log(this.state.questionPackages);

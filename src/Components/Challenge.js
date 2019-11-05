@@ -7,15 +7,43 @@ class Challenge extends React.Component {
   }
 
 
+// map1 from live code
+
+const TaskList = ({ tasks, onClickTask }) => (
+    <ul>
+        {tasks.map((task) => (
+            <Task key={task.text} task={task} onClickTask={onClickTask}/>
+        ))}
+    </ul>
+)
+
+// map2 from live code
+handleToggleDone = (clickedTask) => {
+  this.setState(
+    (state) => {
+
+      const qP = state.tasks.map((task) => {
+        if(task.text === clickedTask.text) {
+          // change is done
+          task.isDone = !task.isDone;
+        }
+        return task;
+      })
+
+      return {
+        ...state,
+        tasks: updatedTasks
+      }
+    },
+    () => localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
+  )
+}
+
+
+
+
 
   render() {
-    // const questionPackage1 = questionsPackages[Math.floor(Math.random() * Math.floor(51))]; 
-
-    // const correctAnswerPosition1 = Math.floor(Math.random() * Math.floor(4));
-    
-    // const allFourAnswers1 = questionPackage1.incorrect_answers;
-    
-    // const splicer1 = allFourAnswers1.splice(correctAnswerPosition1, 0, questionPackage1.correct_answer);
 
     return (
       <>
@@ -23,7 +51,9 @@ class Challenge extends React.Component {
         <div className="ui cards">
           <div className="card">
             <div className="content"></div>
+
             <QandA questionPackages={this.props.questionPackages} />
+            
             <br />
             <button>Next Question</button>
             <br />

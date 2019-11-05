@@ -22,7 +22,6 @@ console.log(oneQuestion);
 const randomPosition = Math.floor(Math.random() * Math.floor(4));
 console.log(randomPosition);
 
-In &quot;Fairy Tail&quot;, what is the nickname of Natsu Dragneel?
 // correct answer from the question package in position [0]
 const correctAnswer = props.questionPackages[0].correct_answer;
 console.log(correctAnswer);
