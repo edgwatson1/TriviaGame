@@ -6,62 +6,26 @@ class Challenge extends React.Component {
     super(props);
   }
 
-
-// map1 from live code
-
-const TaskList = ({ tasks, onClickTask }) => (
-    <ul>
-        {tasks.map((task) => (
-            <Task key={task.text} task={task} onClickTask={onClickTask}/>
-        ))}
-    </ul>
-)
-
-// map2 from live code
-handleToggleDone = (clickedTask) => {
-  this.setState(
-    (state) => {
-
-      const qP = state.tasks.map((task) => {
-        if(task.text === clickedTask.text) {
-          // change is done
-          task.isDone = !task.isDone;
-        }
-        return task;
-      })
-
-      return {
-        ...state,
-        tasks: updatedTasks
-      }
-    },
-    () => localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
-  )
-}
-
-
-
-
-
   render() {
-
+    const { questionPackages, step, onNextStep, onClickAnswer } = this.props;
+    // this is how youdestructure in class component - get rid of this.props
     return (
-      <>
-        <p>This is the challenge container</p>
-        <div className="ui cards">
-          <div className="card">
-            <div className="content"></div>
-
-            <QandA questionPackages={this.props.questionPackages} />
-            
-            <br />
-            <button>Next Question</button>
-            <br />
-          </div>
+      <div className="ui cards">
+        <div className="card">
+          <div className="content"></div>
+          <h1>step={step}</h1>
+          {questionPackages.map((questionPackage, i) => (
+            <QandA
+              questionPackage={questionPackage}
+              onNextStep={onNextStep}
+              isVisible={step === i}
+              onClickAnswer={onClickAnswer}
+            />
+          ))}
         </div>
-      </>
+      </div>
     );
-  };
+  }
 }
 
 export default Challenge;
