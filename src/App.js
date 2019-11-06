@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter , Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
@@ -33,7 +33,7 @@ class App extends React.Component {
   };
 
   // we want to ADD to tasks, not replace them
-  // hence we need a FUCNTION, not an obj in setState()
+  // hence we need a FUNCTION, not an obj in setState()
   handleNextStep = () => {
     this.setState(state => {
       return {
@@ -44,25 +44,37 @@ class App extends React.Component {
   };
   // if step === 10 redirect to another page
 
-  onClickAnswer = userAnswer => {
-    this.setState(state => {
-      console.log(userAnswer);
-      return {
-        ...state,
-        user_answer: userAnswer
-      };
-      console.log(userAnswer);
-    });
+  didAnswerCorrectly = userAnswer => {
+    console.log("didAnswerCorrectly works");
+    return userAnswer ===
+      this.state.questionPackages[this.state.step].correct_answer
+      ? true
+      : false;
   };
 
-  // answerMessage = (userAnswer, )
+  onClickAnswer = userAnswer => {
+    this.setState(state => {
+      const updatedQuestionPackages = state.questionPackages.map(
+        (questionPackage, i) => {
+          if (state.step === i) {
+            questionPackage.user_answer = userAnswer;
+          }
+          return questionPackage;
+        }
+      );
+      return {
+        ...state,
+        questionPackages: updatedQuestionPackages
+      };
+    });
+  };
 
   // inside class components your methods don't need const
 
   render() {
     console.log(this.state);
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <nav>
             <ul>
@@ -87,7 +99,7 @@ class App extends React.Component {
             <Route exact path="/">
               <LandingPage />
             </Route>
-            <Route exact path="/CategoryWheel">
+            <Route path="/CategoryWheel">
               <CategoryWheel
                 fetchQuestions={this.fetchQuestions}
                 categoryName={this.state.category}

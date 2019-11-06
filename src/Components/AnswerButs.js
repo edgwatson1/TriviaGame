@@ -1,15 +1,7 @@
 import React from "react";
-import Answer from "./Answer";
+import AnswerClick from "./AnswerClick";
 
-const AnswerButs = ({ answers, onClickAnswer }) => {
-  const success = butId => {
-    if (butId == 122) {
-      alert("well done!");
-    } else {
-      alert("bad luck!");
-    }
-  };
-
+const AnswerButs = ({ answerOptions, onClickAnswer, questionPackage }) => {
   return (
     <>
       <div className="ui cards">
@@ -18,15 +10,23 @@ const AnswerButs = ({ answers, onClickAnswer }) => {
             <div className="meta">
               <div className="ui four column grid">
                 <div className="row">
-                  {answers.map(answer => {
+                  {answerOptions.map(answer => {
                     return (
-                      <Answer
+                      <AnswerClick
                         answer={answer}
                         onClickAnswer={onClickAnswer}
                         key={answer}
                       />
                     );
                   })}
+                  {questionPackage.user_answer && (
+                    <h1>
+                      {questionPackage.user_answer ===
+                      questionPackage.correct_answer
+                        ? "well done"
+                        : "bad luck"}
+                    </h1>
+                  )}
                 </div>
               </div>
             </div>
