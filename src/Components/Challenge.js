@@ -6,32 +6,26 @@ class Challenge extends React.Component {
     super(props);
   }
 
-
-
   render() {
-    // const questionPackage1 = questionsPackages[Math.floor(Math.random() * Math.floor(51))]; 
-
-    // const correctAnswerPosition1 = Math.floor(Math.random() * Math.floor(4));
-    
-    // const allFourAnswers1 = questionPackage1.incorrect_answers;
-    
-    // const splicer1 = allFourAnswers1.splice(correctAnswerPosition1, 0, questionPackage1.correct_answer);
-
+    const { questionPackages, step, onNextStep, onClickAnswer } = this.props;
+    // this is how youdestructure in class component - get rid of this.props
     return (
-      <>
-        <p>This is the challenge container</p>
-        <div className="ui cards">
-          <div className="card">
-            <div className="content"></div>
-            <QandA questionPackages={this.props.questionPackages} />
-            <br />
-            <button>Next Question</button>
-            <br />
-          </div>
+      <div className="ui cards">
+        <div className="card">
+          <div className="content"></div>
+          <h1>step={step}</h1>
+          {questionPackages.map((questionPackage, i) => (
+            <QandA
+              questionPackage={questionPackage}
+              onNextStep={onNextStep}
+              isVisible={step === i}
+              onClickAnswer={onClickAnswer}
+            />
+          ))}
         </div>
-      </>
+      </div>
     );
-  };
+  }
 }
 
 export default Challenge;
