@@ -1,13 +1,15 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function CategoryWheel({fetchQuestions, categoryName}) {
+function CategoryWheel({ fetchQuestions, categoryName }) {
   return (
     <div>
       <h2>Click to spin the wheel!</h2>
 
       <Link to="/Challenge">
-        <button className="ui button" onClick={fetchQuestions}>You spin me right round baby right round</button>
+        <button className="ui button" onClick={fetchQuestions}>
+          You spin me right round baby right round
+        </button>
       </Link>
       <div>
         <h1>Welcome to the {categoryName} round!</h1>
@@ -16,4 +18,4 @@ function CategoryWheel({fetchQuestions, categoryName}) {
   );
 }
 
-export default CategoryWheel
+export default CategoryWheel;
