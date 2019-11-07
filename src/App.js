@@ -1,11 +1,11 @@
 import React from "react";
-import { Router , Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router , Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
 
-// App component
+// App Component
 
 class App extends React.Component {
   constructor(props) {
