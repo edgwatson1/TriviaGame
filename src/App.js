@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter , Switch, Route, Link } from "react-router-dom";
+import { Router , Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
@@ -30,6 +30,10 @@ class App extends React.Component {
           category: results.results[0].category
         });
       });
+
+      //david> change popup css class to visible
+      document.getElementsByClassName("popup")[0].style.visibility = "visible";
+
   };
 
   // we want to ADD to tasks, not replace them
@@ -74,51 +78,47 @@ class App extends React.Component {
   render() {
     console.log(this.state);
     return (
-      <BrowserRouter>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">LandingPage</Link>
-              </li>
-              <li>
-                <Link to="/CategoryWheel">CategoryWheel</Link>
-              </li>
-              <li>
-                <Link to="/Challenge">Challenge</Link>
-              </li>
-              <li>
-                <Link to="/Scoreboard">Scoreboard</Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
-            <Route path="/CategoryWheel">
-              <CategoryWheel
-                fetchQuestions={this.fetchQuestions}
-                categoryName={this.state.category}
-              />
-            </Route>
-            <Route exact path="/Challenge">
-              <Challenge
-                questionPackages={this.state.questionPackages}
-                step={this.state.step}
-                onNextStep={this.handleNextStep}
-                onClickAnswer={this.onClickAnswer}
-              />
-            </Route>
-            <Route exact path="/Scoreboard">
-              <Scoreboard />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <div class="container">
+          <Router>
+            <div class="header">
+              {/* Temporary link. Just for testing purposes. */}
+              <nav>
+                {/* This will be the current question (1/10, 2/10, etc). */}
+                <div class="state">
+                <Link to="/">GO> Main</Link>
+                </div>
+                {/* This will be the score. */}
+                <div class="score">
+                <Link to="/Scoreboard">GO> Score</Link>
+                </div>
+              </nav>
+            </div>
+              {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+              <Switch>
+                <Route exact path="/">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/CategoryWheel">
+                  <CategoryWheel
+                    fetchQuestions={this.fetchQuestions}
+                    categoryName={this.state.category}
+                  />
+                </Route>
+                <Route exact path="/Challenge">
+                  <Challenge
+                    questionPackages={this.state.questionPackages}
+                    step={this.state.step}
+                    onNextStep={this.handleNextStep}
+                    onClickAnswer={this.onClickAnswer}
+                  />
+                </Route>
+                <Route exact path="/Scoreboard">
+                  <Scoreboard />
+                </Route>
+              </Switch>
+            </Router>
+      </div>
     );
   }
 }
