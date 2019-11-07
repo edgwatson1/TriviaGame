@@ -35,7 +35,9 @@ class QandA extends React.Component {
                 answerOptions={this.state.shuffledAnswers}
                 onClickAnswer={onClickAnswer}
               />
-              <button onClick={onNextStep}>Next Question</button>
+                  {questionPackage.user_answer && (
+                  <button onClick={onNextStep}>Next Question</button>
+                  )}
               {/* you call a function in the parent using the name of the props, not the name of the function in App */}
             </div>
           </div>

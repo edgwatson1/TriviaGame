@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter , Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
+import countScore from "./Helpers/countScore";
 
 // App component
 
@@ -14,13 +15,15 @@ class App extends React.Component {
       category: "",
       questionPackages: placeholderData,
       //see placeholderData at the bottom of the page
-      step: 0
+      step: 0,
+      localScore: 0,
+      globalScore: 0,
     };
   }
 
   fetchQuestions = () => {
     const randomCategory = Math.floor(Math.random() * Math.floor(24)) + 9;
-    console.log(randomCategory);
+    
 
     fetch(`https://opentdb.com/api.php?amount=10&category=${randomCategory}`)
       .then(res => res.json())
@@ -35,24 +38,23 @@ class App extends React.Component {
   // we want to ADD to tasks, not replace them
   // hence we need a FUNCTION, not an obj in setState()
   handleNextStep = () => {
+    
     this.setState(state => {
       return {
         ...state,
         step: ++state.step
       };
     });
+
   };
   // if step === 10 redirect to another page
+  // if step = 10
+// route --> scoreboard page
+// add local score to global score
 
-  didAnswerCorrectly = userAnswer => {
-    console.log("didAnswerCorrectly works");
-    return userAnswer ===
-      this.state.questionPackages[this.state.step].correct_answer
-      ? true
-      : false;
-  };
-
+  
   onClickAnswer = userAnswer => {
+
     this.setState(state => {
       const updatedQuestionPackages = state.questionPackages.map(
         (questionPackage, i) => {
@@ -62,18 +64,26 @@ class App extends React.Component {
           return questionPackage;
         }
       );
+
       return {
         ...state,
-        questionPackages: updatedQuestionPackages
+        questionPackages: updatedQuestionPackages,
+        localScore: countScore(updatedQuestionPackages)
       };
+
     });
   };
 
-  // inside class components your methods don't need const
+
+
+
+  // inside class components your methods don't need a const
 
   render() {
-    console.log(this.state);
+    // <h1>this.state.localScore</h1>
+    
     return (
+      
       <BrowserRouter>
         <div>
           <nav>
@@ -106,6 +116,7 @@ class App extends React.Component {
               />
             </Route>
             <Route exact path="/Challenge">
+            <h1>Local Score: {this.state.localScore}</h1>
               <Challenge
                 questionPackages={this.state.questionPackages}
                 step={this.state.step}
@@ -118,7 +129,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
