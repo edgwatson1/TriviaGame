@@ -1,15 +1,18 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function LandingPage() {
     return (
-      <div>
-        <h2>Landing Page</h2>
-        <p>Here are somabout the game</p>
-        <Link to="/CategoryWheel">
-          <button className="ui button">Play!</button>
+      <>
+      <div class="content">
+        Logo and stuff.
+      </div>
+      <div class="footer">
+        <Link to="CategoryWheel">
+        <button className="btn">Play The <br></br>Trivia Game!</button>
         </Link>
       </div>
+      </>
     );
   }
 
