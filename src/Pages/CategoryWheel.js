@@ -1,21 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
-function CategoryWheel({ fetchQuestions, categoryName }) {
+function CategoryWheel({fetchQuestions, categoryName}) {
+
   return (
-    <div>
-      <h2>Click to spin the wheel!</h2>
+    <>
+      <div class="content">
+        <div class="question">
+        Click to spin the wheel!
+        </div>
+        <div class="popup">
+        Welcome to the<br></br>{categoryName} round!
+        </div>
 
-      <Link to="/Challenge">
-        <button className="ui button" onClick={fetchQuestions}>
-          You spin me right round baby right round
-        </button>
-      </Link>
-      <div>
-        <h1>Welcome to the {categoryName} round!</h1>
+        {/* Temporary link. Just for testing purposes. */}
+        <div>
+          <Link to="/Challenge">GO> Challenge</Link>
+        </div>
       </div>
-    </div>
+
+      <div class="footer">
+        <button className="btn" onClick={fetchQuestions}>Click Me To<br></br>Spin The Wheel!</button>
+      </div>
+    </>
   );
 }
 
-export default CategoryWheel;
+export default CategoryWheel
