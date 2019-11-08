@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
@@ -18,9 +19,11 @@ class App extends React.Component {
       step: 0,
       localScore: 0,
       globalScore: 0,
+      // redirect: false,
     };
   }
 
+  // THE API FETCH
   fetchQuestions = () => {
     const randomCategory = Math.floor(Math.random() * Math.floor(24)) + 9;
 
@@ -34,8 +37,37 @@ class App extends React.Component {
       });
   };
 
+  // REDIRECTION TO SCOREBOARD PAGE WHEN STATE REACHES 10
+  renderRedirect = () => {
+    if (this.state.step === 10) {
+      return <Redirect to="/Scoreboard" />;
+    }
+  };
+
+  // SUM THE LOCAL-SCORE INTO THE GLOBAL-SCORE WHEN STATE REACHES 10
+  // globalScoreAccumulator = () => {
+  //   this.setState(state => {
+  //     if (state.step === 10) {
+  //       return (this.setState.globalScore =
+  //         state.globalScore + state.localScore);
+  //     }
+  //     return state.globalScore;
+  //   });
+  // };
+
+  globalScoreAccumulator = () => {
+    if (this.state.step === 10) {
+      return this.setState({
+        globalScore: this.state.globalScore + this.state.localScore,
+        step: 0,
+      });
+      // return this.state.globalScore;
+    }
+  };
+
   // we want to ADD to tasks, not replace them
   // hence we need a FUNCTION, not an obj in setState()
+
   handleNextStep = () => {
     this.setState(state => {
       return {
@@ -44,11 +76,13 @@ class App extends React.Component {
       };
     });
   };
+
   // if step === 10 redirect to another page
   // if step = 10
   // route --> scoreboard page
   // add local score to global score
 
+  // WHEN AN ANSWER BUTTON IS CLICKED, CREATE A WHOLE NEW STATE OBJECT WHICH WILL NOW INCLUDE A NEW 'USER_STATE' PROPERTY, AND THEN RUN THE LOCAL-SCORE HELPER FUNCTION
   onClickAnswer = userAnswer => {
     this.setState(state => {
       const updatedQuestionPackages = state.questionPackages.map(
@@ -71,16 +105,20 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render() {
-    // <h1>this.state.localScore</h1>
-
+    console.log(this.state.globalScore);
+    console.log(this.state.localScore);
+    console.log(this.state.step);
     return (
       <BrowserRouter>
+        <div>{this.renderRedirect()}</div>
+        <div>{this.globalScoreAccumulator()}</div>
         <div>
           <nav>
             <ul>
               <li>
                 <Link to="/">LandingPage</Link>
               </li>
+
               <li>
                 <Link to="/CategoryWheel">CategoryWheel</Link>
               </li>
@@ -105,8 +143,9 @@ class App extends React.Component {
                 categoryName={this.state.category}
               />
             </Route>
-            <Route exact path="/Challenge">
-              <h1>Local Score: {this.state.localScore}</h1>
+            <Route path="/Challenge">
+              <h1>Global Score: {this.state.globalScore}</h1>
+              <h2>Local Score: {this.state.localScore}</h2>
               <Challenge
                 questionPackages={this.state.questionPackages}
                 step={this.state.step}
@@ -114,8 +153,8 @@ class App extends React.Component {
                 onClickAnswer={this.onClickAnswer}
               />
             </Route>
-            <Route exact path="/Scoreboard">
-              <Scoreboard />
+            <Route path="/Scoreboard">
+              <Scoreboard globalScore={this.state.globalScore} />
             </Route>
           </Switch>
         </div>

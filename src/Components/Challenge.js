@@ -8,12 +8,12 @@ class Challenge extends React.Component {
 
   render() {
     const { questionPackages, step, onNextStep, onClickAnswer } = this.props;
-    // this is how youdestructure in class component - get rid of this.props
+    // this is how you destructure in class component - then yu don't need this.props
     return (
       <div className="ui cards" key="ui_cards-sui">
         <div className="card" key="card-sui">
           <div className="content"></div>
-          <h1>step={step}</h1>
+          <h1>step: {step}</h1>
           {questionPackages.map((questionPackage, i) => (
             <QandA
               questionPackage={questionPackage}
