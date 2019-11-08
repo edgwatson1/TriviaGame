@@ -1,9 +1,10 @@
 import React from "react";
-import { BrowserRouter , Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
+import countScore from "./Helpers/countScore";
 
 // App component
 
@@ -14,20 +15,21 @@ class App extends React.Component {
       category: "",
       questionPackages: placeholderData,
       //see placeholderData at the bottom of the page
-      step: 0
+      step: 0,
+      localScore: 0,
+      globalScore: 0,
     };
   }
 
   fetchQuestions = () => {
     const randomCategory = Math.floor(Math.random() * Math.floor(24)) + 9;
-    console.log(randomCategory);
 
     fetch(`https://opentdb.com/api.php?amount=10&category=${randomCategory}`)
       .then(res => res.json())
       .then(results => {
         this.setState({
           questionPackages: results.results,
-          category: results.results[0].category
+          category: results.results[0].category,
         });
       });
   };
@@ -38,19 +40,14 @@ class App extends React.Component {
     this.setState(state => {
       return {
         ...state,
-        step: ++state.step
+        step: ++state.step,
       };
     });
   };
   // if step === 10 redirect to another page
-
-  didAnswerCorrectly = userAnswer => {
-    console.log("didAnswerCorrectly works");
-    return userAnswer ===
-      this.state.questionPackages[this.state.step].correct_answer
-      ? true
-      : false;
-  };
+  // if step = 10
+  // route --> scoreboard page
+  // add local score to global score
 
   onClickAnswer = userAnswer => {
     this.setState(state => {
@@ -62,17 +59,20 @@ class App extends React.Component {
           return questionPackage;
         }
       );
+
       return {
         ...state,
-        questionPackages: updatedQuestionPackages
+        questionPackages: updatedQuestionPackages,
+        localScore: countScore(updatedQuestionPackages),
       };
     });
   };
 
-  // inside class components your methods don't need const
+  // inside class components your methods don't need a const
 
   render() {
-    console.log(this.state);
+    // <h1>this.state.localScore</h1>
+
     return (
       <BrowserRouter>
         <div>
@@ -106,6 +106,7 @@ class App extends React.Component {
               />
             </Route>
             <Route exact path="/Challenge">
+              <h1>Local Score: {this.state.localScore}</h1>
               <Challenge
                 questionPackages={this.state.questionPackages}
                 step={this.state.step}
@@ -118,7 +119,7 @@ class App extends React.Component {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }
@@ -130,7 +131,7 @@ const placeholderData = [
     difficulty: "medium",
     question: "Rolex is a company that specializes in what type of product?",
     correct_answer: "Watches",
-    incorrect_answers: ["Cars", "Computers", "Sports equipment"]
+    incorrect_answers: ["Cars", "Computers", "Sports equipment"],
   },
   {
     category: "General Knowledge",
@@ -139,7 +140,7 @@ const placeholderData = [
     question:
       "What does the &#039;S&#039; stand for in the abbreviation SIM, as in SIM card? ",
     correct_answer: "Subscriber",
-    incorrect_answers: ["Single", "Secure", "Solid"]
+    incorrect_answers: ["Single", "Secure", "Solid"],
   },
   {
     category: "General Knowledge",
@@ -148,7 +149,7 @@ const placeholderData = [
     question:
       "Which of these is the name of a Japanese system of alternative medicine, literally meaning &quot;finger pressure&quot;?",
     correct_answer: "Shiatsu",
-    incorrect_answers: ["Ukiyo", "Majime", "Ikigai"]
+    incorrect_answers: ["Ukiyo", "Majime", "Ikigai"],
   },
   {
     category: "General Knowledge",
@@ -157,7 +158,7 @@ const placeholderData = [
     question:
       "What was the nickname given to the Hughes H-4 Hercules, a heavy transport flying boat which achieved flight in 1947?",
     correct_answer: "Spruce Goose",
-    incorrect_answers: ["Noah&#039;s Ark", "Fat Man", "Trojan Horse"]
+    incorrect_answers: ["Noah&#039;s Ark", "Fat Man", "Trojan Horse"],
   },
   {
     category: "General Knowledge",
@@ -166,7 +167,11 @@ const placeholderData = [
     question:
       "Which American-owned brewery led the country in sales by volume in 2015?",
     correct_answer: "D. G. Yuengling and Son, Inc",
-    incorrect_answers: ["Anheuser Busch", "Boston Beer Company", "Miller Coors"]
+    incorrect_answers: [
+      "Anheuser Busch",
+      "Boston Beer Company",
+      "Miller Coors",
+    ],
   },
   {
     category: "General Knowledge",
@@ -175,7 +180,7 @@ const placeholderData = [
     question:
       "Computer manufacturer Compaq was acquired for $25 billion dollars in 2002 by which company?",
     correct_answer: "Hewlett-Packard",
-    incorrect_answers: ["Toshiba", "Asus", "Dell"]
+    incorrect_answers: ["Toshiba", "Asus", "Dell"],
   },
   {
     category: "General Knowledge",
@@ -184,7 +189,7 @@ const placeholderData = [
     question:
       "Which country, not including Japan, has the most people of japanese decent?",
     correct_answer: "Brazil",
-    incorrect_answers: ["China", "South Korea", "United States of America"]
+    incorrect_answers: ["China", "South Korea", "United States of America"],
   },
   {
     category: "General Knowledge",
@@ -193,7 +198,7 @@ const placeholderData = [
     question:
       "Which company&#039;s original slogan was &quot;Don&#039;t be evil&quot;?",
     correct_answer: "Google",
-    incorrect_answers: ["Apple", "Yahoo", "Microsoft"]
+    incorrect_answers: ["Apple", "Yahoo", "Microsoft"],
   },
   {
     category: "General Knowledge",
@@ -201,7 +206,7 @@ const placeholderData = [
     difficulty: "easy",
     question: "What is the Zodiac symbol for Gemini?",
     correct_answer: "Twins",
-    incorrect_answers: ["Fish", "Scales", "Maiden"]
+    incorrect_answers: ["Fish", "Scales", "Maiden"],
   },
   {
     category: "General Knowledge",
@@ -209,8 +214,8 @@ const placeholderData = [
     difficulty: "easy",
     question: "What nuts are used in the production of marzipan?",
     correct_answer: "Almonds",
-    incorrect_answers: ["Peanuts", "Walnuts", "Pistachios"]
-  }
+    incorrect_answers: ["Peanuts", "Walnuts", "Pistachios"],
+  },
 ];
 
 export default App;
