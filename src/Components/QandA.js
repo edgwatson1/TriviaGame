@@ -68,3 +68,6 @@ export default QandA;
 // // manipulating answersArray to splice in the correct answer at a random position
 // const emptyMixer = answersArray.splice(randomPosition, 0, correctAnswer);
 // console.log(answersArray);
+
+
+//nothing
