@@ -157,30 +157,33 @@ h1.logo {
     line-height: 0.75;
     font-size: 100px;
     transform: rotate(-10deg) skew(-10deg);
-    text-shadow: 0 1px 1px blue, 0 2px 0 white, 0 3px 0 red,
-      0 3px 0 red, 0 1px 0 red, 0 6px 0 red;
+    /* text-shadow: 0 1px 1px blue, 0 2px 0 white, 0 3px 0 red,
+      0 3px 0 red, 0 1px 0 red, 0 6px 0 red; */
     -webkit-user-select: none;
     text-align: center;
     background: linear-gradient(90deg, #e81111 80%, #ffffff 20%);
     background-size: 200% auto;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    /* animation */
     animation: shine 1s linear infinite;
     animation-direction: alternate;
-    @-webkit-keyframes shine {
-      from {
-        text-shadow: 0 1px 1px #e81111, 0 2px 0 #ffffff, 0 3px 0 #c81111,
-          0 4px 0 #b81111, 0 5px 0 #a81111, 0 6px 0 #881111, 0 7px 0 #661111,
-          0 8px 0 #441111, 0 9px 15px #ffffff;
-      }
-      to {
-        background-position: 250% center;
-        text-shadow: 0 1px 1px #e81111, 0 2px 0 #aa8888, 0 3px 0 #c81111,
-          0 4px 0 #b81111, 0 5px 0 #a81111, 0 6px 0 #881111, 0 7px 0 #661111,
-          0 8px 0 #441111, 0 9px 15px #ff5555;
-      }
     }
-  }
+
+    @keyframes shine {
+        from {
+          text-shadow: 0 1px 1px blue, 0 3px 0 white, 0 3px 0 red,
+          0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
+          0 4px 0 white, 0 8px 10px white;
+        }
+        to {
+          background-position: 250% center;
+          text-shadow: 0 1px 1px blue, 0 2px 0 white, 0 3px 0 red,
+          0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
+          0 4px 0 red, 0 4px 10px red;
+        }
+      }
 
 .popup {
     display: flex;
