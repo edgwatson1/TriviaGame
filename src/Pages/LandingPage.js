@@ -5,7 +5,7 @@ function LandingPage() {
     return (
       <>
       <div class="content">
-        Logo and stuff.
+      <h1 class="logo">SUPER<br></br>TRIVIA<br></br>GAME</h1>
       </div>
       <div class="footer">
         <Link to="CategoryWheel">
