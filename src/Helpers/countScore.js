@@ -1,15 +1,15 @@
 const countScore = questionPackages => {
-  let localScore = 0;
+  let localScore = 0
 
   questionPackages.forEach(item => {
-    const userAnswer = item.user_answer;
-    const correctAnswer = item.correct_answer;
+    const userAnswer = item.user_answer
+    const correctAnswer = item.correct_answer
 
     if (userAnswer === correctAnswer) {
-      localScore += 1;
+      localScore += 2500000
     }
-  });
-  return localScore;
-};
+  })
+  return localScore
+}
 
-export default countScore;
+export default countScore
