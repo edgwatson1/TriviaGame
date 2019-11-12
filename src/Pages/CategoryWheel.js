@@ -7,7 +7,7 @@ function CategoryWheel({fetchQuestions, categoryName}) {
     <>
       <div class="content">
         <div class="question">
-        Click to spin the wheel!
+        Click The Button<br></br>To Spin The<br></br>Category Wheel!
         </div>
         <div class="popup">
         Welcome to the<br></br>{categoryName} round!
@@ -20,7 +20,7 @@ function CategoryWheel({fetchQuestions, categoryName}) {
       </div>
 
       <div class="footer">
-        <button className="btn" onClick={fetchQuestions}>Click Me To<br></br>Spin The Wheel!</button>
+      <button className="btn" onClick={fetchQuestions}><a href="#">Click Me To<br></br>Spin The Wheel!</a></button>
       </div>
     </>
   );

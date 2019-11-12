@@ -38,12 +38,18 @@ class Scoreboard extends React.Component {
     level: 2
 	}
 
+  
+
   render = () => {
+  
+    const otherids = this.state.images.filter(retfil => retfil.id !== this.state.level+1);
+
     return (
       <>
+      
       <div class="content">
         Current Level = {this.state.level+1}
-        
+        <audio src="/score.mp3" autoPlay loop></audio>
         <div class="scoreboard">
           <div class="half">
             <div class="scoreboard_bar">
@@ -52,18 +58,27 @@ class Scoreboard extends React.Component {
             </div>
           </div>
           <div class="half">
-            You are now<br></br>{this.state.images[this.state.level]["charname"]}!
+            You are now<br></br>{this.state.images[this.state.level]["charname"]}!<p></p><p></p>
             <img src={this.state.images[this.state.level]["img"]}  alt="Sprite"/>
           </div>
+          <div class="faded">
+            <img src={otherids[0].img}  alt="Sprite"/>
+            <img src={otherids[1].img}  alt="Sprite"/>
+
+          </div>
+          <div class="faded">
+            <img src={otherids[2].img}  alt="Sprite"/>
+            <img src={otherids[3].img}  alt="Sprite"/>
+          </div>
         </div>
-      </div> 
+      </div>
 
       <div class="footer">
         <Link to="/CategoryWheel">
-        <button class="btn">Play Again!</button>
+        <button class="btn"><a href="#">Play Again!</a></button>
         </Link> 
         <Link to="/">
-        <button class="btn">Landing Page</button>
+        <button class="btn"><a href="#">Landing Page</a></button>
         </Link> 
       </div>
       </>
