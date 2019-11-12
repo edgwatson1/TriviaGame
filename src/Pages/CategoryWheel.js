@@ -5,7 +5,7 @@ class CategoryWheel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 10,
+      time: 6,
       timerisRunning: false
     };
 
@@ -52,7 +52,7 @@ class CategoryWheel extends React.Component {
         </div>
       );
     } else {
-      if (this.state.time > 5) {
+      if (this.state.time > 3) {
         return (
           <div>
             <img src="https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif"></img>
