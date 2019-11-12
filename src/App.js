@@ -7,6 +7,7 @@ import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
 import countScore from "./Helpers/countScore";
 import checkCharacter from "./Helpers/checkCharacter";
+import './App.css'
 
 // *APP COMPONENT*
 
@@ -19,10 +20,9 @@ class App extends React.Component {
       // see placeholderData at the bottom of the page
       step: 0,
       localScore: 0,
-      globalScore: 82431218,
+      globalScore: 0,
       isLoaded: false,
-      character: "Toad"
-      // redirect: false,
+      btnActive: true
     };
   }
 
