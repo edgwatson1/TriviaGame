@@ -1,16 +1,16 @@
-import React from "react";
-import { BrowserRouter, Switch, Route, Link, Redirect } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom'
 
 class CategoryWheel extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       time: 6,
       timerisRunning: false
-    };
+    }
 
-    this.startTimer = this.startTimer.bind(this);
-    this.renderRedirect = this.renderRedirect.bind(this);
+    this.startTimer = this.startTimer.bind(this)
+    this.renderRedirect = this.renderRedirect.bind(this)
   }
 
   startTimer() {
