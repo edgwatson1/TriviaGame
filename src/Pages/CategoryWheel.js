@@ -69,6 +69,5 @@ class CategoryWheel extends React.Component {
       }
     }
   }
-}
-
-export default CategoryWheel;
+  
+export default CategoryWheel
