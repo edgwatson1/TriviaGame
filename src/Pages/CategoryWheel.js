@@ -13,26 +13,26 @@ class CategoryWheel extends React.Component {
     this.renderRedirect = this.renderRedirect.bind(this)
   }
 
-  startTimer () {
+  startTimer() {
     this.setState({
       timerisRunning: true
-    })
+    });
     this.timer = setInterval(
       () =>
         this.setState({
           time: this.state.time - 1
         }),
       1000
-    )
+    );
   }
   renderRedirect = () => {
     if (this.state.time < 0) {
-      return <Redirect to='/Challenge' />
+      return <Redirect to="/Challenge" />;
     }
-  }
+  };
 
-  render () {
-    const { fetchQuestions, categoryName } = this.props
+  render() {
+    const { fetchQuestions, categoryName } = this.props;
 
     if (this.state.timerisRunning === false) {
       return (
@@ -42,22 +42,22 @@ class CategoryWheel extends React.Component {
             <h2>Click below to spin the wheel!</h2>
             <button
               onClick={event => {
-                this.startTimer()
-                fetchQuestions()
+                this.startTimer();
+                fetchQuestions();
               }}
             >
               Click me!
             </button>
           </div>
         </div>
-      )
+      );
     } else {
       if (this.state.time > 3) {
         return (
           <div>
-            <img src='https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif' />
+            <img src="https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif"></img>
           </div>
-        )
+        );
       } else {
         return (
           <div>
@@ -65,10 +65,9 @@ class CategoryWheel extends React.Component {
             <h1>Welcome to the {categoryName} round!</h1>
             <h2>It will begin in {this.state.time} seconds!</h2>
           </div>
-        )
+        );
       }
     }
   }
-}
-
+  
 export default CategoryWheel
