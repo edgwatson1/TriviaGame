@@ -7,7 +7,7 @@ import CategoryWheel from './Pages/CategoryWheel'
 import Scoreboard from './Pages/Scoreboard'
 import countScore from './Helpers/countScore'
 
-// App component
+// *APP COMPONENT*
 
 class App extends React.Component {
   constructor (props) {
@@ -49,16 +49,6 @@ class App extends React.Component {
   }
 
   // SUM THE LOCAL-SCORE INTO THE GLOBAL-SCORE WHEN STATE REACHES 10
-  // globalScoreAccumulator = () => {
-  //   this.setState(state => {
-  //     if (state.step === 10) {
-  //       return (this.setState.globalScore =
-  //         state.globalScore + state.localScore);
-  //     }
-  //     return state.globalScore;
-  //   });
-  // };
-
   globalScoreAccumulator = () => {
     if (this.state.step === 10) {
       return this.setState({
