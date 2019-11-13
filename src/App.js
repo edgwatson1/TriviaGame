@@ -6,7 +6,7 @@ import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
 import countScore from "./Helpers/countScore";
-import './App.css'
+import "./App.css";
 import checkLevel from "./Helpers/checkLevel";
 
 // *APP COMPONENT*
@@ -22,7 +22,7 @@ class App extends React.Component {
       localScore: 0,
       globalScore: 0,
       isLoaded: false,
-      level: 0
+      level: 0,
       // redirect: false,
       btnActive: true
     };
