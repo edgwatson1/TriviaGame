@@ -1,287 +1,283 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
- 
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap");
+
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "Press Start 2P", sans-serif;
-    font-size: 15px;
-    color: white;
-    text-shadow: -1px -2px 0 #000, 3px -1px 0 #000, -2px 2px 0 #000, 3px 3px 0 #111;
-    letter-spacing: 4px;
-    font-weight: bold;
-} 
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 15px;
+  color: white;
+  text-shadow: -1px -2px 0 #000, 3px -1px 0 #000, -2px 2px 0 #000,
+    3px 3px 0 #111;
+  letter-spacing: 4px;
+  font-weight: bold;
+}
 
 /* main elements */
 
 body {
-    background: linear-gradient(aqua,Dodgerblue);
-    height: 100vh;
-    overflow: hidden;
+  background: linear-gradient(aqua, Dodgerblue);
+  height: 100vh;
+  overflow: hidden;
 }
 
 .container {
-    background: linear-gradient(orange, gold);
-    display: flex;
-    width: 60%;
-    min-width: 500px;
-    height: 80vh;
-    min-height: 480px;
-    margin: 10vh auto;
-    flex-direction: column;
-    border-style: outset;
-    border-radius:1em;
+  background: linear-gradient(orange, gold);
+  display: flex;
+  width: 60%;
+  min-width: 500px;
+  height: 80vh;
+  min-height: 480px;
+  margin: 10vh auto;
+  flex-direction: column;
+  border-style: outset;
+  border-radius: 1em;
 }
 
 .header {
-    min-height: 50px;
-    height: 10vh;
-    margin: 1vh;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+  min-height: 50px;
+  height: 10vh;
+  margin: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
-    text-align: center;
-    height: 80vh;
-    min-height: 260px;
-    font-size: 20px;
-    padding: 3vh;
+  text-align: center;
+  height: 80vh;
+  min-height: 260px;
+  font-size: 20px;
+  padding: 3vh;
 }
 
 .footer {
-    min-height: 50px;
-    height: 10vh;
-    margin: 3vh;
-    display: flex; 
-    align-items: center;
-    justify-content: center; 
-    
+  min-height: 50px;
+  height: 10vh;
+  margin: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* secondary elements */
 
 .header .state {
-    float: left;
-    text-align: center;
-    color: white;
-    background: dodgerBlue;
-    border-style: inset;
-    border-radius: 1em;
-    padding: 5px 20px; 
-    margin: 0px 10px;
-    line-height: 30px;
+  float: left;
+  text-align: center;
+  color: white;
+  background: dodgerBlue;
+  border-style: inset;
+  border-radius: 1em;
+  padding: 5px 20px;
+  margin: 0px 10px;
+  line-height: 30px;
 }
 
 .header .score {
-    float: right;
-    text-align: center;
-    color: white;
-    background: dodgerBlue;
-    border-style: inset;
-    border-radius: 1em;
-    padding: 5px 20px; 
-    margin: 0px 10px;
-    line-height: 30px;
+  float: right;
+  text-align: center;
+  color: white;
+  background: dodgerBlue;
+  border-style: inset;
+  border-radius: 1em;
+  padding: 5px 20px;
+  margin: 0px 10px;
+  line-height: 30px;
 }
 
 .content .question {
-    text-align: center;
-    background: orangered;
-    border-style: outset;
-    border-radius:3em;
-    margin: 10px;
-    padding: 20px 10px;
+  text-align: center;
+  background: orangered;
+  border-style: outset;
+  border-radius: 3em;
+  margin: 10px;
+  padding: 20px 10px;
 }
 
 .content .answers {
-    text-align: center;
-    background: blue;
-    border-style: outset;
-    border-radius:3em;
-    margin: 10px; 
-    line-height: 50px;
+  text-align: center;
+  background: blue;
+  border-style: outset;
+  border-radius: 3em;
+  margin: 10px;
+  line-height: 50px;
 }
 
 .content .answers:hover {
-    border-color:black;
-    background: dodgerblue;
-    transition: all 0.2s;
-  }
-  
+  border-color: black;
+  background: dodgerblue;
+  transition: all 0.2s;
+}
+
 .content .result {
-    visibility: hidden;
-    text-align: center;
-    background: red;
-    border-style: outset;
-    border-radius: 1em;
-    margin: 10px; 
-    line-height: 50px;
+  visibility: hidden;
+  text-align: center;
+  background: red;
+  border-style: outset;
+  border-radius: 1em;
+  margin: 10px;
+  line-height: 50px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-   .footer .btn {
-    position:relative;
-    display:inline-block;
-    margin:20px;
-    background: Transparent;
-    border:none;
-  }
-  
-   .footer .btn:after {
-    content:"";
-    height:100%;
-    width:100%;
-    position: absolute;
-    bottom:-8px;
-    left:-3px;
-    z-index:-1;
-    background-color:orangered;
-    border-style: outset;
-    border-radius: 40px;
-  }
-  
-   .footer .btn a{
-    padding: 5px 25px; 
-    line-height: 25px;
-    font-size: 15px;
-    color:white;
-    text-align: center;
-    background-color:orangered;
-    display:block;
-    position:relative;
-    box-shadow:inset 0 1px 0 brown, 0 5px 0 brown;
-    border-style: outset;
-    border-radius: 35px;
-  }
-  
-   .footer .btn a:hover {
-    background-color: orange;
-    box-shadow:inset 0 1px 0 chocolate, 0 5px 0 chocolate;
-    transition: all .1s;
-  }
-  
-   .footer .btn a:hover:active {
-    top:5px;
-    background-color:orangered;
-    box-shadow:inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
-  } 
+.footer .btn {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  background: Transparent;
+  border: none;
+}
+
+.footer .btn:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: -8px;
+  left: -3px;
+  z-index: -1;
+  background-color: orangered;
+  border-style: outset;
+  border-radius: 40px;
+}
+
+.footer .btn a {
+  padding: 5px 25px;
+  line-height: 25px;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+  background-color: orangered;
+  display: block;
+  position: relative;
+  box-shadow: inset 0 1px 0 brown, 0 5px 0 brown;
+  border-style: outset;
+  border-radius: 35px;
+}
+
+.footer .btn a:hover {
+  background-color: orange;
+  box-shadow: inset 0 1px 0 chocolate, 0 5px 0 chocolate;
+  transition: all 0.1s;
+}
+
+.footer .btn a:hover:active {
+  top: 5px;
+  background-color: orangered;
+  box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
+}
 
 @media screen and (max-width: 500px) {
-    .container {
-        margin: 0;
-        width: 100%;
-        height: 100vh;
-        border-style: none;
-        border-radius:0;
-    }
+  .container {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    border-style: none;
+    border-radius: 0;
+  }
 }
 
 /* individual elements */
 
 h1.logo {
-    padding: 20px 0 0 0;
-    font-weight: bolder;
-    line-height: 0.75;
-    font-size: 100px;
-    transform: rotate(-10deg) skew(-10deg);
-    -webkit-user-select: none;
-    text-align: center;
-    background: linear-gradient(90deg, blue 80%, white 20%);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  padding: 20px 0 0 0;
+  font-weight: bolder;
+  line-height: 0.75;
+  font-size: 100px;
+  transform: rotate(-10deg) skew(-10deg);
+  -webkit-user-select: none;
+  text-align: center;
+  background: linear-gradient(90deg, blue 80%, white 20%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-    /* animation */
-    animation: shine 0.67s linear infinite;
-    animation-direction: alternate;
-    }
+  /* animation */
+  animation: shine 0.67s linear infinite;
+  animation-direction: alternate;
+}
 
-    @keyframes shine {
-        from {
-          text-shadow: 
-          0 1px 1px blue, 0 3px 0 white, 0 3px 0 red;
-          /* 0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
+@keyframes shine {
+  from {
+    text-shadow: 0 1px 1px blue, 0 3px 0 white, 0 3px 0 red;
+    /* 0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
           0 4px 0 white, 0 8px 10px white; */
-        }
-        to {
-          background-position: 250% center;
-          text-shadow: 
-          0 1px 1px blue, 0 2px 0 white, 0 3px 0 red;
-          /* 0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
+  }
+  to {
+    background-position: 250% center;
+    text-shadow: 0 1px 1px blue, 0 2px 0 white, 0 3px 0 red;
+    /* 0 3px 0 red, 0 1px 0 red, 0 6px 0 red,
           0 4px 0 red, 0 8px 10px red; */
-        }
-      }
+  }
+}
 
 .popup {
-    display: flex;
-    visibility: hidden;
-    justify-content: center;
-    flex-direction: column;
-    margin: 20px;
-    background: red;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+  background: red;
 }
 
 .scoreboard {
-    display: flex;
-    margin: 5vh auto;
-    min-width: 50vh;
-    height: 70%;
+  display: flex;
+  margin: 5vh auto;
+  min-width: 50vh;
+  height: 70%;
 }
-  
+
 .half {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin: 0 10px 0 0;
-    min-width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin: 0 10px 0 0;
+  min-width: 30%;
 }
 
 .half img {
-    align-self: center;
-    width: auto;
-    height: 150px;
+  align-self: center;
+  width: auto;
+  height: 150px;
 }
 
-
 .faded {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column-reverse; 
-    opacity: 0.5;
-    margin: 0 10px;
-    min-width: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column-reverse;
+  opacity: 0.5;
+  margin: 0 10px;
+  min-width: 50px;
 }
 
 .faded img {
-    width: 60%;
-    height: auto;
+  width: 60%;
+  height: auto;
 }
 
 .scoreboard_bar {
-    align-self: center;
-    position:relative;
-    height: 100%;
-    width: 50px;
-    border-radius: 25px;
-    border: 4px solid black;
+  align-self: center;
+  position: relative;
+  height: 100%;
+  width: 50px;
+  border-radius: 25px;
+  border: 4px solid black;
 }
-  
+
 .scoreboard_bar_fill {
-    position: absolute;
-    background: repeating-linear-gradient(
+  position: absolute;
+  background: repeating-linear-gradient(
     135deg,
     white,
     white 10px,
     dodgerblue 10px,
     dodgerblue 20px
-    );
-    width: 100%;
-    border-radius: inherit;
-    bottom: 0;
-    left: 0;
+  );
+  width: 100%;
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
 }
-  

@@ -1,9 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router , Switch, Route, Link } from "react-router-dom";
+
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
+import countScore from "./Helpers/countScore";
+import "./App.css";
+import checkLevel from "./Helpers/checkLevel";
 
 // App Component
 
@@ -13,31 +18,57 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      //see placeholderData at the bottom of the page
-      step: 0
+      // see placeholderData at the bottom of the page
+      step: 0,
+      localScore: 0,
+      globalScore: 0,
+      isLoaded: false,
+      level: 0,
+      // redirect: false,
+      btnActive: true
     };
   }
 
+  // THE API FETCH
   fetchQuestions = () => {
     const randomCategory = Math.floor(Math.random() * Math.floor(24)) + 9;
-    console.log(randomCategory);
 
-    fetch(`https://opentdb.com/api.php?amount=10&category=${randomCategory}`)
-      .then(res => res.json())
-      .then(results => {
-        this.setState({
-          questionPackages: results.results,
-          category: results.results[0].category
+    this.setState({ isLoaded: false }, () => {
+      fetch(`https://opentdb.com/api.php?amount=10&category=${randomCategory}`)
+        .then(res => res.json())
+        .then(results => {
+          this.setState({
+            questionPackages: results.results,
+            category: results.results[0].category,
+            isLoaded: true
+          });
         });
+    });
+  };
+
+  // REDIRECTION TO SCOREBOARD PAGE WHEN STATE REACHES 10
+  renderRedirect = () => {
+    if (this.state.step === 10) {
+      return <Redirect to="/Scoreboard" />;
+    }
+  };
+
+  // SUM THE LOCAL-SCORE INTO THE GLOBAL-SCORE WHEN STATE REACHES 10
+  globalScoreAccumulator = () => {
+    if (this.state.step === 10) {
+      return this.setState({
+        globalScore: this.state.globalScore + this.state.localScore,
+        step: 0
       });
 
       //david> change popup css class to visible
       document.getElementsByClassName("popup")[0].style.visibility = "visible";
-
+    }
   };
 
   // we want to ADD to tasks, not replace them
   // hence we need a FUNCTION, not an obj in setState()
+
   handleNextStep = () => {
     this.setState(state => {
       return {
@@ -45,15 +76,6 @@ class App extends React.Component {
         step: ++state.step
       };
     });
-  };
-  // if step === 10 redirect to another page
-
-  didAnswerCorrectly = userAnswer => {
-    console.log("didAnswerCorrectly works");
-    return userAnswer ===
-      this.state.questionPackages[this.state.step].correct_answer
-      ? true
-      : false;
   };
 
   onClickAnswer = userAnswer => {
@@ -66,58 +88,76 @@ class App extends React.Component {
           return questionPackage;
         }
       );
+
       return {
         ...state,
-        questionPackages: updatedQuestionPackages
+        questionPackages: updatedQuestionPackages,
+        localScore: countScore(updatedQuestionPackages)
       };
     });
   };
 
-  // inside class components your methods don't need const
+  // THIS CALL THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE LEVEL STATE IN APP.
+  updateLevel = () => {
+    this.setState(state => {
+      return {
+        ...state,
+        level: checkLevel(this.state.globalScore)
+      };
+    });
+  };
+
+  // inside class components your methods don't need a const
 
   render() {
-    console.log(this.state);
     return (
       <div class="container">
-          <Router>
-            <div class="header">
-              {/* Temporary link. Just for testing purposes. */}
-              <nav>
-                {/* This will be the current question (1/10, 2/10, etc). */}
-                <div class="state">
+        <BrowserRouter>
+          <div class="header">
+            {/* Temporary link. Just for testing purposes. */}
+            <nav>
+              {/* This will be the current question (1/10, 2/10, etc). */}
+              <div class="state">
                 <Link to="/">GO> Main</Link>
-                </div>
-                {/* This will be the score. */}
-                <div class="score">
+              </div>
+              {/* This will be the score. */}
+              <div class="score">
                 <Link to="/Scoreboard">GO> Score</Link>
-                </div>
-              </nav>
-            </div>
-              {/* A <Switch> looks through its children <Route>s and
+              </div>
+            </nav>
+          </div>
+          {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
-              <Switch>
-                <Route exact path="/">
-                  <LandingPage />
-                </Route>
-                <Route exact path="/CategoryWheel">
-                  <CategoryWheel
-                    fetchQuestions={this.fetchQuestions}
-                    categoryName={this.state.category}
-                  />
-                </Route>
-                <Route exact path="/Challenge">
-                  <Challenge
-                    questionPackages={this.state.questionPackages}
-                    step={this.state.step}
-                    onNextStep={this.handleNextStep}
-                    onClickAnswer={this.onClickAnswer}
-                  />
-                </Route>
-                <Route exact path="/Scoreboard">
-                  <Scoreboard />
-                </Route>
-              </Switch>
-            </Router>
+          <Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <Route exact path="/CategoryWheel">
+              <CategoryWheel
+                fetchQuestions={this.fetchQuestions}
+                categoryName={this.state.category}
+              />
+            </Route>
+            <Route exact path="/Challenge">
+              <div class="content">
+                <Challenge
+                  questionPackages={this.state.questionPackages}
+                  step={this.state.step}
+                  onNextStep={this.handleNextStep}
+                  onClickAnswer={this.onClickAnswer}
+                  isLoaded={this.state.isLoaded}
+                />
+              </div>
+            </Route>
+            <Route exact path="/Scoreboard">
+              <Scoreboard
+                globalScore={this.state.globalScore}
+                updateLevel={this.updateLevel}
+                level={this.state.level}
+              />
+            </Route>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
