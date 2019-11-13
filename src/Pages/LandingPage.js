@@ -8,6 +8,7 @@ function LandingPage() {
       <>
       <div class="content">
          <h1 class="logo">SUPER<br></br>TRIVIA<br></br>GAME</h1>
+         {/* landing page theme song */}
          <audio src="/landing.mp3" autoPlay loop  hidden></audio>
          </div>
      

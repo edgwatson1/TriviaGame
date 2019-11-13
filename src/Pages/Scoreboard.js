@@ -41,27 +41,33 @@ class Scoreboard extends React.Component {
   
 
   render = () => {
-  
+    /* this creates an array with all other levels other than the level value */
     const otherids = this.state.images.filter(retfil => retfil.id !== this.state.level+1);
 
     return (
       <>
       
       <div class="content">
+        {/* prints current level  using level (array position) + 1 */}
         Current Level = {this.state.level+1}
+        {/* scoreboard theme song */}
         <audio src="/score.mp3" autoPlay loop></audio>
         <div class="scoreboard">
           <div class="half">
+            {/* scoreboard bar */}
             <div class="scoreboard_bar">
               <div class="scoreboard_bar_fill" style={{ height: `${this.state.level * 20 + 20}%` }}>
               </div>
             </div>
           </div>
           <div class="half">
+            {/* character name and image */}
             You are now<br></br>{this.state.images[this.state.level]["charname"]}!<p></p><p></p>
             <img src={this.state.images[this.state.level]["img"]}  alt="Sprite"/>
           </div>
           <div class="faded">
+
+          {/* these 4 characters are the filtered out ones, 50% transparent */}
             <img src={otherids[0].img}  alt="Sprite"/>
             <img src={otherids[1].img}  alt="Sprite"/>
 
