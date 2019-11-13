@@ -1,15 +1,23 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+
+
 
 function LandingPage() {
     return (
-      <div>
-        <h2>Landing Page</h2>
-        <p>Here are somabout the game</p>
-        <Link to="/CategoryWheel">
-          <button className="ui button">Play!</button>
+      <>
+      <div class="content">
+         <h1 class="logo">SUPER<br></br>TRIVIA<br></br>GAME</h1>
+         {/* landing page theme song */}
+         <audio src="/landing.mp3" autoPlay loop  hidden></audio>
+         </div>
+     
+      <div class="footer">
+        <Link to="CategoryWheel">
+        <button class="btn"><a href="#">Play The<br></br>Trivia Game!</a></button>
         </Link>
       </div>
+      </>
     );
   }
 

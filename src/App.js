@@ -1,4 +1,5 @@
 import React from "react";
+
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Challenge from "./Components/Challenge";
@@ -6,10 +7,10 @@ import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
 import countScore from "./Helpers/countScore";
-import './App.css'
+import "./App.css";
 import checkLevel from "./Helpers/checkLevel";
 
-// *APP COMPONENT*
+// App Component
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends React.Component {
       localScore: 0,
       globalScore: 0,
       isLoaded: false,
-      level: 0
+      level: 0,
       // redirect: false,
       btnActive: true
     };
@@ -59,7 +60,9 @@ class App extends React.Component {
         globalScore: this.state.globalScore + this.state.localScore,
         step: 0
       });
-      // return this.state.globalScore;
+
+      //david> change popup css class to visible
+      document.getElementsByClassName("popup")[0].style.visibility = "visible";
     }
   };
 
@@ -75,12 +78,6 @@ class App extends React.Component {
     });
   };
 
-  // if step === 10 redirect to another page
-  // if step = 10
-  // route --> scoreboard page
-  // add local score to global score
-
-  // WHEN AN ANSWER BUTTON IS CLICKED, CREATE A WHOLE NEW STATE OBJECT WHICH WILL NOW INCLUDE A NEW 'USER_STATE' PROPERTY, AND THEN RUN THE LOCAL-SCORE HELPER FUNCTION
   onClickAnswer = userAnswer => {
     this.setState(state => {
       const updatedQuestionPackages = state.questionPackages.map(
@@ -100,7 +97,7 @@ class App extends React.Component {
     });
   };
 
-  // THIS CALL THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE CHARACTER STATE IN APP.
+  // THIS CALL THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE LEVEL STATE IN APP.
   updateLevel = () => {
     this.setState(state => {
       return {
@@ -114,52 +111,45 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <div>{this.renderRedirect()}</div>
-        <div>{this.globalScoreAccumulator()}</div>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">LandingPage</Link>
-              </li>
-
-              <li>
-                <Link to="/CategoryWheel">CategoryWheel</Link>
-              </li>
-              <li>
-                <Link to="/Challenge">Challenge</Link>
-              </li>
-              <li>
-                <Link to="/Scoreboard">Scoreboard</Link>
-              </li>
-            </ul>
-          </nav>
-
+      <div class="container">
+        <BrowserRouter>
+          <div class="header">
+            {/* Temporary link. Just for testing purposes. */}
+            <nav>
+              {/* This will be the current question (1/10, 2/10, etc). */}
+              <div class="state">
+                <Link to="/">GO> Main</Link>
+              </div>
+              {/* This will be the score. */}
+              <div class="score">
+                <Link to="/Scoreboard">GO> Score</Link>
+              </div>
+            </nav>
+          </div>
           {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+                renders the first one that matches the current URL. */}
           <Switch>
             <Route exact path="/">
               <LandingPage />
             </Route>
-            <Route path="/CategoryWheel">
+            <Route exact path="/CategoryWheel">
               <CategoryWheel
                 fetchQuestions={this.fetchQuestions}
                 categoryName={this.state.category}
               />
             </Route>
-            <Route path="/Challenge">
-              <h1>Global Score: {this.state.globalScore}</h1>
-              <h2>Local Score: {this.state.localScore}</h2>
-              <Challenge
-                questionPackages={this.state.questionPackages}
-                step={this.state.step}
-                onNextStep={this.handleNextStep}
-                onClickAnswer={this.onClickAnswer}
-                isLoaded={this.state.isLoaded}
-              />
+            <Route exact path="/Challenge">
+              <div class="content">
+                <Challenge
+                  questionPackages={this.state.questionPackages}
+                  step={this.state.step}
+                  onNextStep={this.handleNextStep}
+                  onClickAnswer={this.onClickAnswer}
+                  isLoaded={this.state.isLoaded}
+                />
+              </div>
             </Route>
-            <Route path="/Scoreboard">
+            <Route exact path="/Scoreboard">
               <Scoreboard
                 globalScore={this.state.globalScore}
                 updateLevel={this.updateLevel}
@@ -167,8 +157,8 @@ class App extends React.Component {
               />
             </Route>
           </Switch>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     );
   }
 }

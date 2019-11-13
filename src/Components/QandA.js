@@ -1,29 +1,34 @@
-import React from 'react'
-import { shuffle } from 'lodash'
-import QuestionBox from './QuestionBox'
-import AnswerButs from './AnswerButs'
+import React from "react";
+import { shuffle } from "lodash";
+import QuestionBox from "./QuestionBox";
+import AnswerButs from "./AnswerButs";
 
 class QandA extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       shuffledAnswers: shuffle([
         props.questionPackage.correct_answer,
         ...props.questionPackage.incorrect_answers
       ])
-    }
+    };
   }
 
-  render () {
-    const { questionPackage, onNextStep, isVisible, onClickAnswer } = this.props
-    if (!isVisible) return null
+  render() {
+    const {
+      questionPackage,
+      onNextStep,
+      isVisible,
+      onClickAnswer
+    } = this.props;
+    if (!isVisible) return null;
 
     return (
-      <div className='ui cards'>
-        <div className='card'>
-          <div className='content'>
-            <div className='meta'>...</div>
-            <div className='question'>
+      <div className="ui cards">
+        <div className="card">
+          <div className="content">
+            <div className="meta">...</div>
+            <div className="question">
               <QuestionBox questionStr={questionPackage.question} />
               <AnswerButs
                 questionPackage={questionPackage}
@@ -38,8 +43,8 @@ class QandA extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default QandA
+export default QandA;
