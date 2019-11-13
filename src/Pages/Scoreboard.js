@@ -24,17 +24,24 @@ import { Link } from "react-router-dom";
 // };
 
 class Scoreboard extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.updateLevel();
+  }
+
   render() {
-    const { globalScore, character, updateCharacter } = this.props;
+    const { globalScore, level } = this.props;
 
     return (
       <div>
-        <button onClick={updateCharacter}>check character</button>
         <h1>Scoreboard</h1>
         <h2>Global Score: {globalScore}</h2>
 
         <p>
-          You scored {globalScore} points, you are {character}!
+          You scored {globalScore} points. You are at level {level}!
         </p>
         <Link to="/CategoryWheel">
           <button className="ui button">Next round</button>

@@ -6,7 +6,7 @@ import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
 import countScore from "./Helpers/countScore";
-import checkCharacter from "./Helpers/checkCharacter";
+import checkLevel from "./Helpers/checkLevel";
 
 // *APP COMPONENT*
 
@@ -21,7 +21,7 @@ class App extends React.Component {
       localScore: 0,
       globalScore: 82431218,
       isLoaded: false,
-      character: "Toad"
+      level: 0
       // redirect: false,
     };
   }
@@ -98,12 +98,12 @@ class App extends React.Component {
     });
   };
 
-  // THIS CALL THE HELPER METHOD UPDATECHARACTER WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT CHARACTER NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE CHARACTER STATE IN APP.
-  updateCharacter = () => {
+  // THIS CALL THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE CHARACTER STATE IN APP.
+  updateLevel = () => {
     this.setState(state => {
       return {
         ...state,
-        character: checkCharacter(this.state.globalScore)
+        level: checkLevel(this.state.globalScore)
       };
     });
   };
@@ -160,8 +160,8 @@ class App extends React.Component {
             <Route path="/Scoreboard">
               <Scoreboard
                 globalScore={this.state.globalScore}
-                updateCharacter={this.updateCharacter}
-                character={this.state.character}
+                updateLevel={this.updateLevel}
+                level={this.state.level}
               />
             </Route>
           </Switch>
