@@ -8,7 +8,11 @@ class Challenge extends React.Component {
       step,
       onNextStep,
       onClickAnswer,
-      isLoaded
+      isLoaded,
+      characters,
+      level,
+      totalScore,
+      category
     } = this.props;
     // this is how you destructure in class component - then you don't need this.props
 
@@ -17,18 +21,39 @@ class Challenge extends React.Component {
       return <p>PLEASE WAIT</p>;
     }
     return (
-      <div className="ui cards" key="ui_cards-sui">
-        <div className="card" key="card-sui">
-          <h1>step: {step}</h1>
-          {questionPackages.map((questionPackage, i) => (
-            <QandA
-              questionPackage={questionPackage}
-              onNextStep={onNextStep}
-              isVisible={step === i}
-              onClickAnswer={onClickAnswer}
-              key={i}
-            />
-          ))}
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <img src={characters[level].img}></img>
+              </td>
+              <td rowspan="2" id="category">
+                {category} ROUND
+              </td>
+              <td>
+                <img src="./mariocoin.png" height="40px"></img>
+              </td>
+            </tr>
+            <tr>
+              <td>{step}/10</td>
+              <td>{totalScore()}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div className="ui cards" key="ui_cards-sui">
+          <div className="card" key="card-sui">
+            <h1>step: {step}</h1>
+            {questionPackages.map((questionPackage, i) => (
+              <QandA
+                questionPackage={questionPackage}
+                onNextStep={onNextStep}
+                isVisible={step === i}
+                onClickAnswer={onClickAnswer}
+                key={i}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
