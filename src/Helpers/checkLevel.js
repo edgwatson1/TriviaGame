@@ -15,16 +15,16 @@ const checkLevel = globScore => {
     {
       5: [100000000, 999999999999999999999999]
     }
-  ];
+  ]
 
-  const res = globalScoreLevelBuckets.filter(function(el) {
-    var key = el[Object.keys(el)];
-    return globScore >= key[0] && globScore <= key[1];
-  });
+  const res = globalScoreLevelBuckets.filter(function (el) {
+    var key = el[Object.keys(el)]
+    return globScore >= key[0] && globScore <= key[1]
+  })
 
-  const resAsString = Object.keys(res[0]).join();
+  const resAsString = Object.keys(res[0]).join()
 
-  return resAsString;
-};
+  return Number(resAsString)
+}
 
-export default checkLevel;
+export default checkLevel
