@@ -45,10 +45,12 @@ class Scoreboard extends React.Component {
 
   qnsToProgressMessage = () => {
     const scoreLine = [0, 11250000, 33750000, 71250000, 100000000]
-    const sum = (scoreLine[this.props.level] - this.props.globalScore) / 3750000
+    const sum = Math.ceil(
+      (scoreLine[this.props.level] - this.props.globalScore) / 3750000
+    )
     return (
       this.props.level < 5 &&
-      `Only ${sum} more right answers to level up to ${
+      `Only ${sum} more correct answers to level up to ${
         this.state.images[this.props.level]['charname']
       }!!`
     )
@@ -62,16 +64,31 @@ class Scoreboard extends React.Component {
     } else if (this.props.level === 3) {
       return 'Big Boss Bowser!! The Architect of Intellect.'
     } else if (this.props.level === 4) {
-      return "You're officially Royalty! Keep this up and you'll become Mario. You're a Quiz-Monster!!!!"
+      return "You've become royalty, Princess! You're the Quiz-Queen!!"
     } else if (this.props.level === 5) {
-      return "AAaaahhh YOU COMPLETED IT!! You're Mario! You know everything!! You've taken over the world!!!!! AAAAHHHHHHhhhhhhhh!!!"
+      return "AAaaahhh YOU COMPLETED IT!! You're Mario! You know everything!! AAAAHHHHHHhhhhhhhh!!!"
     } else {
       return 'Keep flexing that intellect to level up!'
     }
   }
 
+  whoIsBig = () => {
+    if (this.state.level === 1) {
+      return '/level1-cropped.png'
+    } else if (this.state.level === 2) {
+      return '/level2-cropped.png'
+    } else if (this.state.level === 3) {
+      return '/level3-cropped.png'
+    } else if (this.state.level === 4) {
+      return '/level4-cropped.png'
+    } else if (this.state.level === 5) {
+      return '/level5-cropped.png'
+    } else {
+      return '/level1-cropped.png'
+    }
+  }
+
   render = () => {
-    console.log(this.props.level)
     /* this creates an array with all other levels other than the level value */
     const otherids = this.state.images.filter(
       retfil => retfil.id !== this.state.level + 1
@@ -96,32 +113,64 @@ class Scoreboard extends React.Component {
             </tr>
           </tbody>
         </table>
-        <div className='content'>
+        <div className='content2'>
           <audio src='/score.mp3' autoPlay loop />
           <h1 className='char-announcement'>{this.congratsMessage()}</h1>
 
           <div className='char-grid'>
-            <div className='big-pic big-char-grid'>
+            {/* big character */}
+            <div className='big-pic big-char-row'>
               <img
                 className='big-pic-style'
-                src='/level1-cropped.png'
+                src={this.whoIsBig()}
                 alt='current character'
               />
             </div>
-            <div className='toad small-char-grid'>
-              <img src='/level1-cropped.png' alt='toad' height='60%' />
+            {/* small characters */}
+            <div
+              className={
+                this.state.level === 1
+                  ? 'toad small-char-row-invisible'
+                  : 'toad small-char-row-faded'
+              }
+            >
+              <img src='/level1-cropped.png' alt='toad' height='75vh' />
             </div>
-            <div className='yoshi small-char-grid'>
-              <img src='/level2-cropped.png' alt='yoshi' height='60%' />
+            <div
+              className={
+                this.state.level === 2
+                  ? 'yoshi small-char-row-invisible'
+                  : 'yoshi small-char-row-faded'
+              }
+            >
+              <img src='/level2-cropped.png' alt='yoshi' height='75vh' />
             </div>
-            <div className='bowser small-char-grid'>
-              <img src='/level3-cropped.png' alt='bowser' height='60%' />
+            <div
+              className={
+                this.state.level === 3
+                  ? 'bowser small-char-row-invisible'
+                  : 'bowser small-char-row-faded'
+              }
+            >
+              <img src='/level3-cropped.png' alt='bowser' height='75vh' />
             </div>
-            <div className='princess small-char-grid'>
-              <img src='/level4-cropped.png' alt='princess' height='60%' />
+            <div
+              className={
+                this.state.level === 4
+                  ? 'princess small-char-row-invisible'
+                  : 'princess small-char-row-faded'
+              }
+            >
+              <img src='/level4-cropped.png' alt='princess' height='75vh' />
             </div>
-            <div className='mario small-char-grid'>
-              <img src='/level5-cropped.png' alt='mario' height='60%' />
+            <div
+              className={
+                this.state.level === 5
+                  ? 'mario small-char-row-invisible'
+                  : 'mario small-char-row-faded'
+              }
+            >
+              <img src='/level5-cropped.png' alt='mario' height='75vh' />
             </div>
           </div>
           <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
@@ -129,7 +178,7 @@ class Scoreboard extends React.Component {
         <div className='footer'>
           <Link to='/CategoryWheel'>
             <button className='btn'>
-              <a href='#'>Continue...</a>
+              <a href='/CategoryWheel'> Continue...</a>
             </button>
           </Link>
         </div>
