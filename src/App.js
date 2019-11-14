@@ -22,8 +22,9 @@ class App extends React.Component {
       step: 0,
       localScore: 0,
       globalScore: 0,
+      totalScore: this.localScore + this.globalScore,
       isLoaded: false,
-      level: 0,
+      level: 1,
       // redirect: false,
       btnActive: true
     };
@@ -107,25 +108,17 @@ class App extends React.Component {
     });
   };
 
+  totalScore = () => {
+    const res = this.state.localScore + this.state.globalScore;
+    return res;
+  };
+
   // inside class components your methods don't need a const
 
   render() {
     return (
       <div class="container">
         <BrowserRouter>
-          <div class="header">
-            {/* Temporary link. Just for testing purposes. */}
-            <nav>
-              {/* This will be the current question (1/10, 2/10, etc). */}
-              <div class="state">
-                <Link to="/">GO> Main</Link>
-              </div>
-              {/* This will be the score. */}
-              <div class="score">
-                <Link to="/Scoreboard">GO> Score</Link>
-              </div>
-            </nav>
-          </div>
           {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
           <Switch>
@@ -146,6 +139,11 @@ class App extends React.Component {
                   onNextStep={this.handleNextStep}
                   onClickAnswer={this.onClickAnswer}
                   isLoaded={this.state.isLoaded}
+                  characters={characters}
+                  level={this.state.level}
+                  totalScore={this.totalScore}
+                  step={this.state.step}
+                  category={this.state.category}
                 />
               </div>
             </Route>
@@ -250,6 +248,34 @@ const placeholderData = [
     question: "What nuts are used in the production of marzipan?",
     correct_answer: "Almonds",
     incorrect_answers: ["Peanuts", "Walnuts", "Pistachios"]
+  }
+];
+
+const characters = [
+  {
+    id: 1,
+    img: "/level1-cropped.png",
+    charname: "TOAD"
+  },
+  {
+    id: 2,
+    img: "/level2-cropped.png",
+    charname: "YOSHI"
+  },
+  {
+    id: 3,
+    img: "/level3-cropped.png",
+    charname: "BOWSER"
+  },
+  {
+    id: 4,
+    img: "/level4-cropped.png",
+    charname: "PRINCESS"
+  },
+  {
+    id: 5,
+    img: "/level5-cropped.png",
+    charname: "MARIO"
   }
 ];
 
