@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   font-family: "Press Start 2P", sans-serif;
-  font-size: 15px;
   color: white;
   text-shadow: -1px -2px 0 #000, 3px -1px 0 #000, -2px 2px 0 #000,
     3px 3px 0 #111;
@@ -22,7 +21,7 @@ body {
 
 .container {
   background: linear-gradient(orange, gold);
-  display: flex;
+  display: flexbox;
   width: 60%;
   min-width: 500px;
   height: 80vh;
@@ -44,7 +43,6 @@ body {
 
 .content {
   text-align: center;
-  height: 0vh;
   min-height: 260px;
   font-size: 20px;
   padding: 3vh;
@@ -52,8 +50,6 @@ body {
 
 .footer {
   min-height: 25px;
-  height: 20vh;
-  margin: 10vh;
   display: flex;
   align-items: top;
   justify-content: center;
@@ -70,18 +66,11 @@ body {
   padding-bottom: 20px;
 }
 
-.david {
-  grid-area: 2 / 1 / 4 / 2;
-}
-.alex {
-  grid-area: 2 / 2 / 4 / 3;
-}
-.edward {
-  grid-area: 2 / 3 / 4 / 4;
-}
-.madebymessage {
-  grid-area: 1 / 1 / 2 / 4;
-}
+.david {grid-area: 2 / 1 / 4 / 2;}
+.alex {grid-area: 2 / 2 / 4 / 3;}
+.edward {grid-area: 2 / 3 / 4 / 4;}
+.madebymessage {grid-area: 1 / 1 / 2 / 4;}
+
 
 /* secondary elements */
 
@@ -164,12 +153,18 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  width: 50vw;
+  height: 40px;
+}
+
 .footer .btn {
   position: relative;
   display: inline-block;
   margin: 20px;
   background: Transparent;
   border: none;
+  
 }
 
 .footer .btn:after {
@@ -349,3 +344,54 @@ td {
 #category {
   color: lavender;
 }
+
+
+/* Scoreboard page */
+
+.table-head {
+  padding-top: 2%;
+}
+
+.char-announcement {
+  font-size: 100%;
+  line-height: 1.8;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 3%;
+  grid-row-gap: 0px;
+  margin: 25px 10px 10px 10px;
+  }
+  
+  .small-char-grid {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .big-char-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 5%;
+  }
+
+  .big-pic-style {
+    height: 20vh;
+  }
+
+  .big-pic { grid-area: 1 / 1 / 2 / 6; }
+  .toad { grid-area: 2 / 1 / 3 / 2; }
+  .yoshi { grid-area: 2 / 2 / 3 / 3; }
+  .bowser { grid-area: 2 / 3 / 3 / 4; }
+  .princess { grid-area: 2 / 4 / 3 / 5; }
+  .mario { grid-area: 2 / 5 / 3 / 6; }
+
+  .qns-to-progress {
+    margin-top: 7%;
+    font-size: 70%;
+    line-height: 1.8;
+  }

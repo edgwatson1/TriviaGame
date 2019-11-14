@@ -80,17 +80,56 @@ class Scoreboard extends React.Component {
 
     return (
       <>
-        <h1>Score: {globalScore}</h1>
-        <div class='content'>
-          <audio src='/score.mp3' autoPlay loop />
-          <h1>{this.congratsMessage()}</h1>
-          <h2>{this.qnsToProgressMessage()}</h2>
-        </div>
+        <table className='table-head'>
+          <tbody>
+            <tr>
+              <td>
+                <img src='./mariocoin.png' height='40px' />
+              </td>
 
-        <div class='footer'>
+              <td>
+                <h3>TOTAL SCORE: {globalScore}</h3>
+              </td>
+              <td>
+                <img src='./mariocoin.png' height='40px' />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div className='content'>
+          <audio src='/score.mp3' autoPlay loop />
+          <h1 className='char-announcement'>{this.congratsMessage()}</h1>
+
+          <div className='char-grid'>
+            <div className='big-pic big-char-grid'>
+              <img
+                className='big-pic-style'
+                src='/level1-cropped.png'
+                alt='current character'
+              />
+            </div>
+            <div className='toad small-char-grid'>
+              <img src='/level1-cropped.png' alt='toad' height='60%' />
+            </div>
+            <div className='yoshi small-char-grid'>
+              <img src='/level2-cropped.png' alt='yoshi' height='60%' />
+            </div>
+            <div className='bowser small-char-grid'>
+              <img src='/level3-cropped.png' alt='bowser' height='60%' />
+            </div>
+            <div className='princess small-char-grid'>
+              <img src='/level4-cropped.png' alt='princess' height='60%' />
+            </div>
+            <div className='mario small-char-grid'>
+              <img src='/level5-cropped.png' alt='mario' height='60%' />
+            </div>
+          </div>
+          <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
+        </div>
+        <div className='footer'>
           <Link to='/CategoryWheel'>
-            <button class='btn'>
-              <a href='#'>Play Again!</a>
+            <button className='btn'>
+              <a href='#'>Continue...</a>
             </button>
           </Link>
         </div>
