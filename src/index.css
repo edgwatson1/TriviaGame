@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: "Press Start 2P", sans-serif;
-  font-size: 15px;
+
   color: white;
   text-shadow: -1px -2px 0 #000, 3px -1px 0 #000, -2px 2px 0 #000,
     3px 3px 0 #111;
@@ -22,7 +22,7 @@ body {
 
 .container {
   background: linear-gradient(orange, gold);
-  display: flex;
+  display: flexbox;
   width: 60%;
   min-width: 500px;
   height: 80vh;
@@ -59,6 +59,20 @@ body {
   justify-content: center;
 }
 
+.madebyfooterwrapper {
+  width: 400px;
+  height: 100px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    margin: 0;
+    height: 70%;
+  }
+}
+
 .madebyfooter {
   display: grid;
   grid-template-columns: repeat(autofit, 3, 1fr);
@@ -81,6 +95,28 @@ body {
 }
 .madebymessage {
   grid-area: 1 / 1 / 2 / 4;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  h1.logo {
+    padding: 0px 0 0 0;
+    font-weight: bolder;
+    font-size: 200% !important;
+
+    -webkit-text-fill-color: transparent;
+  }
+
+  .madebyfooterwrapper {
+    width: 320px;
+    margin: 0 auto;
+    padding-right: 10px;
+    display: flex-box;
+  }
+
+  #name {
+    font-size: 12px;
+  }
 }
 
 /* secondary elements */
@@ -161,7 +197,9 @@ body {
 }
 
 a {
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer .btn {
@@ -211,23 +249,13 @@ a {
   box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
 }
 
-@media screen and (max-width: 500px) {
-  .container {
-    margin: 0;
-    width: 100%;
-    height: 100vh;
-    border-style: none;
-    border-radius: 0;
-  }
-}
-
 /* individual elements */
 
 h1.logo {
   padding: 20px 0 0 0;
   font-weight: bolder;
-  line-height: 0.75;
-  font-size: 100px;
+  line-height: 1;
+  font-size: 50px;
   transform: rotate(-10deg) skew(-10deg);
   -webkit-user-select: none;
   text-align: center;
