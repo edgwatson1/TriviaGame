@@ -1,114 +1,101 @@
 // SCOREBOARD IS A DIRECT CHILD OF APP.JS
 
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Scoreboard extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount () {
+    this.props.updateLevel()
   }
 
-  componentDidMount() {
-    this.props.updateLevel();
-  }
-
-  /* Character sprites change according to "level" number (0-4). 
+  /* Character sprites change according to "level" number (0-4).
   Chage "level" to change both image, bar height and character name. */
 
   state = {
     images: [
       {
         id: 1,
-        img: "/level1.png",
-        charname: "Toad"
+        img: '/level1.png',
+        charname: 'Toad'
       },
       {
         id: 2,
-        img: "/level2.png",
-        charname: "Yoshi"
+        img: '/level2.png',
+        charname: 'Yoshi'
       },
       {
         id: 3,
-        img: "/level3.png",
-        charname: "Bowser"
+        img: '/level3.png',
+        charname: 'Bowser'
       },
       {
         id: 4,
-        img: "/level4.png",
-        charname: "Princess"
+        img: '/level4.png',
+        charname: 'Princess'
       },
       {
         id: 5,
-        img: "/level5.png",
-        charname: "Mario"
+        img: '/level5.png',
+        charname: 'Mario'
       }
     ],
     /* Score input goes here. */
-    level: 2
-  };
+    level: this.props.level
+  }
+
+  qnsToProgressMessage = () => {
+    const scoreLine = [0, 11250000, 33750000, 71250000, 100000000]
+    const sum = (scoreLine[this.props.level] - this.props.globalScore) / 3750000
+    return (
+      this.props.level < 5 &&
+      `Only ${sum} more right answers to level up to ${
+        this.state.images[this.props.level]['charname']
+      }!!`
+    )
+  }
+
+  congratsMessage = () => {
+    if (this.props.level === 1) {
+      return "You're now Toad!"
+    } else if (this.props.level === 2) {
+      return 'Yes, Yoshi!! Stay on the Brain-train!!'
+    } else if (this.props.level === 3) {
+      return 'Big Boss Bowser!! The Architect of Intellect.'
+    } else if (this.props.level === 4) {
+      return "You're officially Royalty! Keep this up and you'll become Mario. You're a Quiz-Monster!!!!"
+    } else if (this.props.level === 5) {
+      return "AAaaahhh YOU COMPLETED IT!! You're Mario! You know everything!! You've taken over the world!!!!! AAAAHHHHHHhhhhhhhh!!!"
+    } else {
+      return 'Keep flexing that intellect to level up!'
+    }
+  }
 
   render = () => {
+    console.log(this.props.level)
     /* this creates an array with all other levels other than the level value */
     const otherids = this.state.images.filter(
       retfil => retfil.id !== this.state.level + 1
-    );
-    const { globalScore, level } = this.props;
+    )
+    const { globalScore, level } = this.props
+
     return (
       <>
-        <h2>
-          Global Score: {globalScore} level: {level}
-        </h2>
-        <div class="content">
-          {/* prints current level  using level (array position) + 1 */}
-          Current Level = {this.state.level + 1}
-          {/* scoreboard theme song */}
-          <audio src="/score.mp3" autoPlay loop></audio>
-          <div class="scoreboard">
-            <div class="half">
-              {/* scoreboard bar */}
-              <div class="scoreboard_bar">
-                <div
-                  class="scoreboard_bar_fill"
-                  style={{ height: `${this.state.level * 20 + 20}%` }}
-                ></div>
-              </div>
-            </div>
-            <div class="half">
-              {/* character name and image */}
-              You are now<br></br>
-              {this.state.images[this.state.level]["charname"]}!<p></p>
-              <p></p>
-              <img
-                src={this.state.images[this.state.level]["img"]}
-                alt="Sprite"
-              />
-            </div>
-            <div class="faded">
-              {/* these 4 characters are the filtered out ones, 50% transparent */}
-              <img src={otherids[0].img} alt="Sprite" />
-              <img src={otherids[1].img} alt="Sprite" />
-            </div>
-            <div class="faded">
-              <img src={otherids[2].img} alt="Sprite" />
-              <img src={otherids[3].img} alt="Sprite" />
-            </div>
-          </div>
+        <h1>Score: {globalScore}</h1>
+        <div class='content'>
+          <audio src='/score.mp3' autoPlay loop />
+          <h1>{this.congratsMessage()}</h1>
+          <h2>{this.qnsToProgressMessage()}</h2>
         </div>
 
-        <div class="footer">
-          <Link to="/CategoryWheel">
-            <button class="btn">
-              <a href="#">Play Again!</a>
-            </button>
-          </Link>
-          <Link to="/">
-            <button class="btn">
-              <a href="#">Landing Page</a>
+        <div class='footer'>
+          <Link to='/CategoryWheel'>
+            <button class='btn'>
+              <a href='#'>Play Again!</a>
             </button>
           </Link>
         </div>
       </>
-    );
-  };
+    )
+  }
 }
-export default Scoreboard;
+export default Scoreboard
