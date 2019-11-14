@@ -44,19 +44,43 @@ body {
 
 .content {
   text-align: center;
-  height: 80vh;
+  height: 0vh;
   min-height: 260px;
   font-size: 20px;
   padding: 3vh;
 }
 
 .footer {
-  min-height: 50px;
-  height: 10vh;
-  margin: 3vh;
+  min-height: 25px;
+  height: 20vh;
+  margin: 10vh;
   display: flex;
-  align-items: center;
+  align-items: top;
   justify-content: center;
+}
+
+.madebyfooter {
+  display: grid;
+  grid-template-columns: repeat(autofit, 3, 1fr);
+  grid-template-rows: repeat(autofit, 5, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  justify-items: center;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.david {
+  grid-area: 2 / 1 / 4 / 2;
+}
+.alex {
+  grid-area: 2 / 2 / 4 / 3;
+}
+.edward {
+  grid-area: 2 / 3 / 4 / 4;
+}
+.madebymessage {
+  grid-area: 1 / 1 / 2 / 4;
 }
 
 /* secondary elements */
