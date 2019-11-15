@@ -97,90 +97,92 @@ class Scoreboard extends React.Component {
 
     return (
       <>
-        <table className='table-head'>
-          <tbody>
-            <tr>
-              <td>
-                <img src='./mariocoin.png' height='40px' />
-              </td>
+        <div class='container'>
+          <table className='table-head'>
+            <tbody>
+              <tr>
+                <td>
+                  <img src='./mariocoin.png' height='40px' />
+                </td>
 
-              <td>
-                <h3>TOTAL SCORE: {globalScore}</h3>
-              </td>
-              <td>
-                <img src='./mariocoin.png' height='40px' />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div className='content2'>
-          <audio src='/score.mp3' autoPlay loop />
-          <h1 className='char-announcement'>{this.congratsMessage()}</h1>
+                <td>
+                  <h3>TOTAL SCORE: {globalScore}</h3>
+                </td>
+                <td>
+                  <img src='./mariocoin.png' height='40px' />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className='content2'>
+            <audio src='/score.mp3' autoPlay loop />
+            <h1 className='char-announcement'>{this.congratsMessage()}</h1>
 
-          <div className='char-grid'>
-            {/* big character */}
-            <div className='big-pic big-char-row'>
-              <img
-                className='big-pic-style'
-                src={this.whoIsBig()}
-                alt='current character'
-              />
+            <div className='char-grid'>
+              {/* big character */}
+              <div className='big-pic big-char-row'>
+                <img
+                  className='big-pic-style'
+                  src={this.whoIsBig()}
+                  alt='current character'
+                />
+              </div>
+              {/* small characters */}
+              <div
+                className={
+                  this.state.level === 1
+                    ? 'toad small-char-row-invisible'
+                    : 'toad small-char-row-faded'
+                }
+              >
+                <img src='/level1-cropped.png' alt='toad' height='75vh' />
+              </div>
+              <div
+                className={
+                  this.state.level === 2
+                    ? 'yoshi small-char-row-invisible'
+                    : 'yoshi small-char-row-faded'
+                }
+              >
+                <img src='/level2-cropped.png' alt='yoshi' height='75vh' />
+              </div>
+              <div
+                className={
+                  this.state.level === 3
+                    ? 'bowser small-char-row-invisible'
+                    : 'bowser small-char-row-faded'
+                }
+              >
+                <img src='/level3-cropped.png' alt='bowser' height='75vh' />
+              </div>
+              <div
+                className={
+                  this.state.level === 4
+                    ? 'princess small-char-row-invisible'
+                    : 'princess small-char-row-faded'
+                }
+              >
+                <img src='/level4-cropped.png' alt='princess' height='75vh' />
+              </div>
+              <div
+                className={
+                  this.state.level === 5
+                    ? 'mario small-char-row-invisible'
+                    : 'mario small-char-row-faded'
+                }
+              >
+                <img src='/level5-cropped.png' alt='mario' height='75vh' />
+              </div>
             </div>
-            {/* small characters */}
-            <div
-              className={
-                this.state.level === 1
-                  ? 'toad small-char-row-invisible'
-                  : 'toad small-char-row-faded'
-              }
-            >
-              <img src='/level1-cropped.png' alt='toad' height='75vh' />
-            </div>
-            <div
-              className={
-                this.state.level === 2
-                  ? 'yoshi small-char-row-invisible'
-                  : 'yoshi small-char-row-faded'
-              }
-            >
-              <img src='/level2-cropped.png' alt='yoshi' height='75vh' />
-            </div>
-            <div
-              className={
-                this.state.level === 3
-                  ? 'bowser small-char-row-invisible'
-                  : 'bowser small-char-row-faded'
-              }
-            >
-              <img src='/level3-cropped.png' alt='bowser' height='75vh' />
-            </div>
-            <div
-              className={
-                this.state.level === 4
-                  ? 'princess small-char-row-invisible'
-                  : 'princess small-char-row-faded'
-              }
-            >
-              <img src='/level4-cropped.png' alt='princess' height='75vh' />
-            </div>
-            <div
-              className={
-                this.state.level === 5
-                  ? 'mario small-char-row-invisible'
-                  : 'mario small-char-row-faded'
-              }
-            >
-              <img src='/level5-cropped.png' alt='mario' height='75vh' />
-            </div>
+            <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
           </div>
-          <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
-        </div>
-        <div className='footer'>
-          <Link to='/CategoryWheel'>
-            <button className='btn'>
-              <a href='/CategoryWheel'> Continue...</a>
-            </button>
-          </Link>
+          <div className='footer'>
+            <Link to='/CategoryWheel'>
+              <button className='btn'>
+                <a href='/CategoryWheel'> Continue...</a>
+              </button>
+            </Link>
+          </div>
         </div>
       </>
     )
