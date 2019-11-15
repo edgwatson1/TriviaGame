@@ -115,46 +115,42 @@ class App extends React.Component {
 
   render () {
     return (
-      <div class='container'>
-        <BrowserRouter>
-          {/* A <Switch> looks through its children <Route>s and
+      <BrowserRouter>
+        {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
-          <Switch>
-            <Route exact path='/'>
-              <LandingPage />
-            </Route>
-            <Route exact path='/CategoryWheel'>
-              <CategoryWheel
-                fetchQuestions={this.fetchQuestions}
-                categoryName={this.state.category}
-              />
-            </Route>
-            <Route exact path='/Challenge'>
-              <div class='content'>
-                <Challenge
-                  questionPackages={this.state.questionPackages}
-                  step={this.state.step}
-                  onNextStep={this.handleNextStep}
-                  onClickAnswer={this.onClickAnswer}
-                  isLoaded={this.state.isLoaded}
-                  characters={characters}
-                  level={this.state.level}
-                  totalScore={this.totalScore}
-                  step={this.state.step}
-                  category={this.state.category}
-                />
-              </div>
-            </Route>
-            <Route exact path='/Scoreboard'>
-              <Scoreboard
-                globalScore={this.state.globalScore}
-                updateLevel={this.updateLevel}
-                level={this.state.level}
-              />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </div>
+        <Switch>
+          <Route exact path='/'>
+            <LandingPage />
+          </Route>
+          <Route exact path='/CategoryWheel'>
+            <CategoryWheel
+              fetchQuestions={this.fetchQuestions}
+              categoryName={this.state.category}
+            />
+          </Route>
+          <Route exact path='/Challenge'>
+            <Challenge
+              questionPackages={this.state.questionPackages}
+              step={this.state.step}
+              onNextStep={this.handleNextStep}
+              onClickAnswer={this.onClickAnswer}
+              isLoaded={this.state.isLoaded}
+              characters={characters}
+              level={this.state.level}
+              totalScore={this.totalScore}
+              step={this.state.step}
+              category={this.state.category}
+            />
+          </Route>
+          <Route exact path='/Scoreboard'>
+            <Scoreboard
+              globalScore={this.state.globalScore}
+              updateLevel={this.updateLevel}
+              level={this.state.level}
+            />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
