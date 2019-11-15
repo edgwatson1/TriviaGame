@@ -10,7 +10,7 @@ class CategoryWheel extends React.Component {
     }
 
     this.startTimer = this.startTimer.bind(this)
-    this.renderRedirect = this.renderRedirect.bind(this)
+    this.renderRedirect2 = this.renderRedirect2.bind(this)
   }
 
   startTimer () {
@@ -25,7 +25,8 @@ class CategoryWheel extends React.Component {
       1000
     )
   }
-  renderRedirect = () => {
+
+  renderRedirect2 = () => {
     if (this.state.time < 1) {
       return <Redirect to='/Challenge' />
     }
@@ -74,7 +75,7 @@ class CategoryWheel extends React.Component {
         return (
           <div class='container'>
             <div class='content'>
-              {this.renderRedirect()}
+              {this.renderRedirect2()}
               <h2>{categoryName}</h2>
               <p class='timer'>{this.state.time}</p>
             </div>

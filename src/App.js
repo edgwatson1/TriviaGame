@@ -7,8 +7,8 @@ import LandingPage from './Pages/LandingPage'
 import CategoryWheel from './Pages/CategoryWheel'
 import Scoreboard from './Pages/Scoreboard'
 import countScore from './Helpers/countScore'
-import './App.css'
 import checkLevel from './Helpers/checkLevel'
+import './App.css'
 
 // App Component
 
@@ -23,8 +23,7 @@ class App extends React.Component {
       globalScore: 0,
       totalScore: this.localScore + this.globalScore,
       isLoaded: false,
-      level: 1,
-      btnActive: true
+      level: 1
     }
   }
 
@@ -114,21 +113,24 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render () {
+    console.log(this.state.step)
     return (
       <BrowserRouter>
+        {this.renderRedirect()}
+        {this.globalScoreAccumulator()}
         {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path='/'>
             <LandingPage />
           </Route>
-          <Route exact path='/CategoryWheel'>
+          <Route path='/CategoryWheel'>
             <CategoryWheel
               fetchQuestions={this.fetchQuestions}
               categoryName={this.state.category}
             />
           </Route>
-          <Route exact path='/Challenge'>
+          <Route path='/Challenge'>
             <Challenge
               questionPackages={this.state.questionPackages}
               step={this.state.step}
@@ -138,11 +140,10 @@ class App extends React.Component {
               characters={characters}
               level={this.state.level}
               totalScore={this.totalScore}
-              step={this.state.step}
               category={this.state.category}
             />
           </Route>
-          <Route exact path='/Scoreboard'>
+          <Route path='/Scoreboard'>
             <Scoreboard
               globalScore={this.state.globalScore}
               updateLevel={this.updateLevel}
