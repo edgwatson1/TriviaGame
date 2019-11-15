@@ -1,8 +1,8 @@
-import React from 'react'
-import QandA from './QandA'
+import React from "react";
+import QandA from "./QandA";
 
 class Challenge extends React.Component {
-  render () {
+  render() {
     const {
       questionPackages,
       step,
@@ -13,32 +13,32 @@ class Challenge extends React.Component {
       level,
       totalScore,
       category
-    } = this.props
+    } = this.props;
     // this is how you destructure in class component - then you don't need this.props
 
     // This IF statement says: if the state isLoading is false, return 'PLEASE WAIT' (which then stops the 2nd return running). If not, then the 2nd return will run and the information trickles down to QandA. Basically, if the API fetch hasn't come back in yet, don't pass the info down to the child component. In order to make this work I had to add another setState (in the App component) to the ADP fetch to always reset isLoading back to false prior to a fetch occuring, and then set the isLoading back to true once the fetch had completed.
     if (!isLoaded) {
-      return <p>PLEASE WAIT</p>
+      return <p>PLEASE WAIT</p>;
     }
     return (
       <>
-        <div class='container'>
-          <table className='challenge-header'>
+        <div class="container">
+          <table className="challenge-header">
             <tbody>
               <tr>
-                <td className='challenge-header-cell'>
+                <td className="challenge-header-cell">
                   <img src={characters[level].img} />
                 </td>
-                <td className='challenge-header-cell' rowspan='2' id='category'>
-                  {category} ROUND
+                <td className="challenge-header-cell" rowspan="2" id="category">
+                  {decodeURIComponent(category)} ROUND
                 </td>
                 <td>
-                  <img src='./mariocoin.png' height='40px' />
+                  <img src="./mariocoin.png" height="40px" />
                 </td>
               </tr>
               <tr>
-                <td className='challenge-header-cell'>{step}/10</td>
-                <td className='challenge-header-cell'>{totalScore()}</td>
+                <td className="challenge-header-cell">{step}/10</td>
+                <td className="challenge-header-cell">{totalScore()}</td>
               </tr>
             </tbody>
           </table>
@@ -54,8 +54,8 @@ class Challenge extends React.Component {
           ))}
         </div>
       </>
-    )
+    );
   }
 }
 
-export default Challenge
+export default Challenge;
