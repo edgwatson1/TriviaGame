@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const AnswerClick = ({ answer, onClickAnswer, questionPackage }) => {
   return (
@@ -9,18 +9,18 @@ const AnswerClick = ({ answer, onClickAnswer, questionPackage }) => {
         questionPackage.user_answer &&
         answer !== questionPackage.correct_answer &&
         answer === questionPackage.user_answer
-          ? 'btn-incorrect'
-          : ''
+          ? "btn-incorrect"
+          : ""
       } 
       ${
-    questionPackage.user_answer && answer === questionPackage.correct_answer
-      ? 'btn-correct'
-      : ''
-    } ans-btn`}
+        questionPackage.user_answer && answer === questionPackage.correct_answer
+          ? "btn-correct"
+          : ""
+      } ans-btn`}
     >
-      {answer}
+      {decodeURIComponent(answer)}
     </button>
-  )
-}
+  );
+};
 
-export default AnswerClick
+export default AnswerClick;

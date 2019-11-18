@@ -1,5 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const QuestionBox = props => <p>{props.questionStr}</p>
+const QuestionBox = props => {
+  return <p>{decodeURIComponent(props.questionStr)} </p>;
+};
 
-export default QuestionBox
+export default QuestionBox;
