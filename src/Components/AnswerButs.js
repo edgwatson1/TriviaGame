@@ -7,7 +7,7 @@ const AnswerButs = ({ answerOptions, onClickAnswer, questionPackage }) => {
       {answerOptions.map(answer => {
         return (
           <AnswerClick
-            answer={decodeURIComponent(answer)}
+            answer={answer}
             onClickAnswer={onClickAnswer}
             key={answer}
             questionPackage={questionPackage}
