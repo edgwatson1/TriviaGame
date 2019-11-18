@@ -22,23 +22,26 @@ class QandA extends React.Component {
       <>
         <div className='content'>
           <div className='question-box'>
-            <div className='question-text'>
               <QuestionBox questionStr={questionPackage.question} />
             </div>
+
             <AnswerButs
               questionPackage={questionPackage}
               answerOptions={this.state.shuffledAnswers}
               onClickAnswer={onClickAnswer}
             />
           </div>
-        </div>
+          <div className="footer">
         {questionPackage.user_answer && (
-          <div className='footer'>
+          
             <button className='btn' onClick={onNextStep}>
-              Next Question
+            <a href='#'>
+            Next<br></br> 
+            Question</a>
             </button>
-          </div>
+          
         )}
+        </div>
         {/* you call a function in the parent using the name of the props, not the name of the function in App */}
       </>
     )

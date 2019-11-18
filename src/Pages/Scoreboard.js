@@ -57,15 +57,15 @@ class Scoreboard extends React.Component {
   }
 
   congratsMessage = () => {
-    if (this.props.level === 1) {
+    if (this.state.level === 1) {
       return "You're now Toad!"
-    } else if (this.props.level === 2) {
+    } else if (this.state.level === 2) {
       return 'Yes, Yoshi!! Stay on the Brain-train!!'
-    } else if (this.props.level === 3) {
+    } else if (this.state.level === 3) {
       return 'Big Boss Bowser!! The Architect of Intellect.'
-    } else if (this.props.level === 4) {
+    } else if (this.state.level === 4) {
       return "You've become royalty, Princess! You're the Quiz-Queen!!"
-    } else if (this.props.level === 5) {
+    } else if (this.state.level === 5) {
       return "AAaaahhh YOU COMPLETED IT!! You're Mario! You know everything!! AAAAHHHHHHhhhhhhhh!!!"
     } else {
       return 'Keep flexing that intellect to level up!'
@@ -83,8 +83,6 @@ class Scoreboard extends React.Component {
       return '/level4-cropped.png'
     } else if (this.state.level === 5) {
       return '/level5-cropped.png'
-    } else {
-      return '/level1-cropped.png'
     }
   }
 
@@ -93,11 +91,11 @@ class Scoreboard extends React.Component {
     const otherids = this.state.images.filter(
       retfil => retfil.id !== this.state.level + 1
     )
-    const { globalScore, level } = this.props
+    const { globalScore, level } = this.props;
 
     return (
       <>
-        <div class='container'>
+        <div className='container'>
           <table className='table-head'>
             <tbody>
               <tr>
@@ -115,9 +113,12 @@ class Scoreboard extends React.Component {
             </tbody>
           </table>
           <div className='content2'>
-            <audio src='/score.mp3' autoPlay loop />
-            <h1 className='char-announcement'>{this.congratsMessage()}</h1>
 
+            <audio src='/score.mp3' autoPlay loop />
+            <div>
+              <h1 className='char-announcement'>{this.congratsMessage()}</h1>
+            </div>
+            
             <div className='char-grid'>
               {/* big character */}
               <div className='big-pic big-char-row'>
@@ -174,16 +175,19 @@ class Scoreboard extends React.Component {
                 <img src='/level5-cropped.png' alt='mario' height='75vh' />
               </div>
             </div>
-            <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
-          </div>
+
+            <div>
+              <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
+            </div>
+            </div>      
           <div className='footer'>
             <Link to='/CategoryWheel'>
               <button className='btn'>
-                <a href='/CategoryWheel'> Continue...</a>
+                <a href='/CategoryWheel'> Click To<br></br>Continue...</a>
               </button>
             </Link>
           </div>
-        </div>
+      </div>
       </>
     )
   }
