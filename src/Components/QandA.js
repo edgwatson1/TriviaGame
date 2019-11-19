@@ -4,7 +4,7 @@ import QuestionBox from './QuestionBox'
 import AnswerButs from './AnswerButs'
 
 class QandA extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       shuffledAnswers: shuffle([
@@ -14,7 +14,7 @@ class QandA extends React.Component {
     }
   }
 
-  render () {
+  render() {
     const { questionPackage, onNextStep, isVisible, onClickAnswer } = this.props
     if (!isVisible) return null
 
@@ -22,25 +22,25 @@ class QandA extends React.Component {
       <>
         <div className='content'>
           <div className='question-box'>
-              <QuestionBox questionStr={questionPackage.question} />
-            </div>
-
-            <AnswerButs
-              questionPackage={questionPackage}
-              answerOptions={this.state.shuffledAnswers}
-              onClickAnswer={onClickAnswer}
-            />
+            <QuestionBox className="question-str" questionStr={questionPackage.question} />
           </div>
-          <div className="footer">
-        {questionPackage.user_answer && (
-          
+
+          <AnswerButs
+            questionPackage={questionPackage}
+            answerOptions={this.state.shuffledAnswers}
+            onClickAnswer={onClickAnswer}
+          />
+        </div>
+        <div className="footer">
+          {questionPackage.user_answer && (
+
             <button className='btn' onClick={onNextStep}>
-            <a href='#'>
-            Next<br></br> 
-            Question</a>
+              <a href='#'>
+                Next<br></br>
+                Question</a>
             </button>
-          
-        )}
+
+          )}
         </div>
         {/* you call a function in the parent using the name of the props, not the name of the function in App */}
       </>

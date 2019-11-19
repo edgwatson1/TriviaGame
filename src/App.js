@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      step: 0,
+      step: 8,
       localScore: 0,
       globalScore: 0,
       totalScore: this.localScore + this.globalScore,
@@ -97,7 +97,7 @@ class App extends React.Component {
     });
   };
 
-  // THIS CALL THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE LEVEL STATE IN APP.
+  // THIS CALLS THE HELPER METHOD UPDATELEVEL WHICH LOOKS AT GLOBAL SCORE AND RETURNS THE RIGHT LEVEL NAME AS A STRING WHICH WE THEN SET AS THE VALUE OF THE LEVEL STATE IN APP.
   updateLevel = () => {
     this.setState(state => {
       return {
@@ -115,7 +115,7 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render() {
-    console.log(this.state.step);
+    console.log('level', this.state.level);
     return (
       <BrowserRouter>
         {this.renderRedirect()}
@@ -249,6 +249,7 @@ const placeholderData = [
 ];
 
 const characters = [
+  {},
   {
     id: 1,
     img: "/level1-cropped.png",
