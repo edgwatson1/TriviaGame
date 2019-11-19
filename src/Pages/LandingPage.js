@@ -19,7 +19,7 @@ function LandingPage () {
         <audio src='/landing.mp3' autoPlay loop />
           <Link to='CategoryWheel'>
             <button className='btn'>
-              <a href='#'>Play<br></br>Now!</a>
+              <a href='#'>Play Now!</a>
             </button>
           </Link>
         </div>
