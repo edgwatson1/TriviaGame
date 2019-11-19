@@ -51,7 +51,7 @@ class Scoreboard extends React.Component {
     return (
       this.props.level < 5 &&
       `Only ${sum} more correct answers to level up to ${
-        this.state.images[this.props.level]["charname"]
+      this.state.images[this.props.level]["charname"]
       }!!`
     );
   };
@@ -89,28 +89,30 @@ class Scoreboard extends React.Component {
     const otherids = this.state.images.filter(
       retfil => retfil.id !== this.state.level + 1
     );
-    const { globalScore, level } = this.props;
+    const { globalScore, level, overallTime } = this.props;
 
     if (this.props.level === 5) {
+      const overallTimeSnapshot = overallTime;
       return (
         <div className="container completedgame">
           <div className="content2">
             <img src="./rotating star.gif" height="50px" />
             <h2>
-              You completed the game! <br></br>You are Mario!
+              You've completed the game!<br /><br />Mario wants you on the leaderboard!
             </h2>
-
             <img
               src="https://media.giphy.com/media/SPB2DnJt1oB8c/giphy.gif"
               height="150vh"
-            ></img>
+            />
             <footer>
-              <button
-                className="btn btnplayagain"
-                value="Refresh Page"
-                onClick="window.location.reload)();"
-              >
-                <a href="/CategoryWheel"> Play Again</a>
+              <form>
+                <label>
+                  Name:
+                <input type="text" maxLength="3" />
+                </label>
+              </form>
+              <button className="btn" >
+                <a href="/Leaderboard">Submit</a>
               </button>
             </footer>
           </div>

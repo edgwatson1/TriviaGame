@@ -6,6 +6,7 @@ import Challenge from "./Components/Challenge";
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
+import Leaderboard from "./Pages/Leaderboard"
 import countScore from "./Helpers/countScore";
 import checkLevel from "./Helpers/checkLevel";
 import "./App.css";
@@ -18,13 +19,15 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      step: 0,
+      step: 8,
       localScore: 0,
-      globalScore: 0,
+      globalScore: 9999999999,
       totalScore: this.localScore + this.globalScore,
       isLoaded: false,
-      level: 1
+      level: 1,
+      overallTime: 0
     };
+    this.startOverallTimer = this.startOverallTimer.bind(this);
   }
 
   // THE API FETCH
@@ -45,6 +48,18 @@ class App extends React.Component {
         });
     });
   };
+
+  // TIMES HOW LONG THE WHOLE GAME TOO TO ESTABLISH LEADERBOARD POSITION
+  startOverallTimer() {
+    this.timer = setInterval(
+      () =>
+        this.setState({
+          overallTime: this.state.overallTime + 1
+        }),
+      1000
+    );
+
+  }
 
   // REDIRECTION TO SCOREBOARD PAGE WHEN STATE REACHES 10
   renderRedirect = () => {
@@ -115,7 +130,7 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render() {
-    console.log("level", this.state.level);
+    console.log(this.state.overallTime);
     return (
       <BrowserRouter>
         {this.renderRedirect()}
@@ -124,7 +139,7 @@ class App extends React.Component {
                 renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path="/">
-            <LandingPage />
+            <LandingPage startOverallTimer={this.startOverallTimer} />
           </Route>
           <Route path="/CategoryWheel">
             <CategoryWheel
@@ -150,7 +165,11 @@ class App extends React.Component {
               globalScore={this.state.globalScore}
               updateLevel={this.updateLevel}
               level={this.state.level}
+              overallTime={this.state.overallTime}
             />
+          </Route>
+          <Route path="/Leaderboard">
+            <Leaderboard />
           </Route>
         </Switch>
       </BrowserRouter>
