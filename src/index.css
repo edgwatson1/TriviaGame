@@ -13,22 +13,27 @@
   line-height: 1.5;
 }
 
-html, body {
+html,
+body {
   background: linear-gradient(aqua, Dodgerblue);
   height: 100vh;
   width: 100vw;
   position: absolute;
-  z-index:1;
-  top:0px;
-  left:0px;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
   margin: none;
   padding: none;
-  
 }
 
 h1 {
   font-size: calc(18px + 1vw);
   line-height: 2;
+}
+
+h3 {
+  text-align: center;
+  font-size: calc(8px + 1vw);
 }
 
 .container {
@@ -43,7 +48,10 @@ h1 {
   /* overflow: auto; */
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   align-items: center;
   padding: 1vh;
 }
@@ -73,7 +81,7 @@ h1 {
   flex-grow: 1;
   align-items: center;
   text-align: center;
-  }
+}
 
 .footer {
   min-height: 50px;
@@ -108,7 +116,6 @@ h1 {
 .edward {
   grid-area: 2 / 3 / 3 / 4;
 }
-
 
 /* button */
 
@@ -185,7 +192,7 @@ a {
 }
 
 .answersbtn:hover {
-  box-shadow: 0px 0px 10px 2px #FFFFFF;
+  box-shadow: 0px 0px 10px 2px #ffffff;
 }
 
 .correctbtn {
@@ -386,67 +393,66 @@ h1.logo {
 }
 
 @media screen and (max-width: 550px) {
-    * {
-      font-size: calc(14px + 1vw);
-    }
-    .container {
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      border-style: none;
-      border-radius: 0;
-      padding: 0px 1vh 0px 0px;
-    }
+  * {
+    font-size: calc(14px + 1vw);
+  }
+  .container {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    border-style: none;
+    border-radius: 0;
+    padding: 0px 1vh 0px 0px;
+  }
 
-    h1.logo {
-      font-size: 55px;
-      margin: 15%;
-    }
+  h1.logo {
+    font-size: 55px;
+    margin: 15%;
+  }
 
-    .madebyfooter {
-      display: grid;
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      grid-template-columns: repeat(2, 1fr,auto);
-      grid-template-rows: repeat(4, 1fr, auto);
-      grid-column-gap: 0px;
-      grid-row-gap: 0px;
-      justify-items: center;
-      align-items: center;
-      margin: 2vh 2vh;
-    }
+  .madebyfooter {
+    display: grid;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    grid-template-columns: repeat(2, 1fr, auto);
+    grid-template-rows: repeat(4, 1fr, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
+    align-items: center;
+    margin: 2vh 2vh;
+  }
 
-    .madebymessage {
-      grid-area: 1 / 1 / 2 / 3;
-    }
+  .madebymessage {
+    grid-area: 1 / 1 / 2 / 3;
+  }
 
-    .alex {
-      grid-area: 2 / 1 / 3 / 2;
-    }
-    .david {
-      grid-area: 3 / 1 / 4 / 2;
-    }
-    .edward {
-      grid-area: 4 / 1 / 5 / 2;
-    }
-    
-    .answersbtn {
-      padding: 0 10px;
-      min-height: 60px;
-      width: 97%;
-      margin: 5px;
-      font-size: calc(12px + 1vw);
-    }
+  .alex {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  .david {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  .edward {
+    grid-area: 4 / 1 / 5 / 2;
+  }
 
-    .content {
-      font-size: calc(12px + 1vw);
-    }
+  .answersbtn {
+    padding: 0 10px;
+    min-height: 60px;
+    width: 97%;
+    margin: 5px;
+    font-size: calc(12px + 1vw);
+  }
+
+  .content {
+    font-size: calc(12px + 1vw);
+  }
 }
 
-  @media screen and (min-width: 700px) {
-
+@media screen and (min-width: 700px) {
   h1.logo {
     font-size: 75px;
   }
