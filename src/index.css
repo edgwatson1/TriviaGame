@@ -9,8 +9,8 @@
     3px 3px 0 #111;
   letter-spacing: 4px;
   font-weight: bold;
-  font-size: calc(10px + 1vw);
-  line-height: 1.5;
+  font-size: calc(6px + 1.5vmin);
+  line-height: 2;
 }
 
 html,
@@ -27,12 +27,11 @@ body {
 }
 
 h1 {
-  font-size: calc(18px + 1vw);
+  font-size: calc(10px + 2vmin);
 }
 
-h3 {
-  text-align: center;
-  font-size: calc(8px + 1vw);
+h2 {
+  font-size: calc(5px + 2vmin);
 }
 
 .container {
@@ -49,32 +48,23 @@ h3 {
   min-height: 480px;
   /* overflow: auto; */
   margin: auto;
+  padding: 2vmin 2vmin 0 2vmin;
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   align-items: center;
-  padding: 1vh;
+  text-align: center;
 }
 
 .content {
   background: orangered;
   border-style: outset;
   border-radius: 1em;
-  margin: 10px 10px 20px 10px;
-  padding: 2vh;
-  flex-grow: 1;
-}
-
-.content2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2vmin;
-  flex-grow: 1;
+  margin: 1vmin;
+  padding: 1vmin;
+  flex-grow: 1;  
 }
 
 .content3 {
@@ -84,24 +74,17 @@ h3 {
   text-align: center;
 }
 
-/* .footer {
-  min-height: 50px;
-  height: 10vh;
-  margin: 3vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+.footer {
+  min-height: 15vmin;
+}
 
 .madebyfooter {
   display: grid;
   grid-template-columns: repeat(autofit, 3, 1fr);
   grid-template-rows: repeat(autofit, 4, 1fr);
-  grid-column-gap: 2vw;
-  grid-row-gap: 1vh;
+  grid-column-gap: 2vmin;
   justify-items: center;
   text-align: center;
-  margin: 4vh 2vw 2vh 2vw;
 }
 
 .madebymessage {
@@ -120,15 +103,6 @@ h3 {
 
 /* button */
 
-.footer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  /* flex-grow: 1; */
-}
-
 a {
   text-decoration: none;
 }
@@ -138,7 +112,7 @@ a {
   display: inline-block;
   background: Transparent;
   border: none;
-  margin: auto 10px auto auto;
+  margin: 1vmin 1vmin 2vmin 1vmin;
 }
 
 .btn:after {
@@ -155,9 +129,8 @@ a {
 }
 
 .btn a {
-  padding: 5px calc(18px + 3vmin);
-  line-height: 2;
-  font-size: calc(10px + 3vmin);
+  padding: 2vmin 4.5vmin;
+  font-size: calc(10px + 2vmin);
   color: white;
   text-align: center;
   background-color: orangered;
@@ -185,15 +158,15 @@ a {
 }
 
 .answersbtn {
-  font-size: calc(6px + 1vw);
-  background: blue;
+  background: royalblue;
   text-align: center;
   border-style: outset;
   border-radius: 2em;
-  min-height: 80px;
-  padding: 0 10px;
+  vertical-align: top;
+  min-height: calc(20px + 8vmin);
   width: 47%;
-  margin: 5px;
+  margin: 1vmin;
+  font-size: calc(5px + 1.5vmin);
 }
 
 .answersbtn:hover {
@@ -211,7 +184,7 @@ a {
 /* individual elements */
 
 h1.logo {
-  padding: 45px 0px;
+  margin: 5vmin 0 5vmin 0;
   font-weight: bolder;
   line-height: 0.95;
   font-size: 8vmin;
@@ -272,10 +245,12 @@ h1.logo {
 }
 
 .spinner-message {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 25% 5% 15% 5%;
-  line-height: 170%;
+  flex-grow: 1;
 }
 
 .mario-thinkin-text {
@@ -285,15 +260,10 @@ h1.logo {
 }
 
 .spinnergif {
-  margin: 0 auto;
-  text-align: center;
+  margin: 4vmin;
   border-style: outset;
   border-radius: 1em;
-  position: absolute;
-  width: 60%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 40%;
 }
 
 .timer-category-message {
@@ -330,21 +300,20 @@ h1.logo {
 /* for header with category, round etc. dispalying in challenge componnt */
 
 .challenge-header {
-  width: 100%;
+  max-width: 90%;
   text-align: center;
 }
 
 .challenge-header-cell {
   text-align: center;
   text-transform: uppercase;
-  font-size: 10px;
-  line-height: 20px;
-  min-width: 80px;
+  font-size: calc(5px + 1vmin);
+  min-width: 100px;
 }
 
 #category {
   color: lavender;
-  font-size: calc(8px + 1vw);
+  font-size: calc(7px + 1vmin);
 }
 
 /* Challenge page */
@@ -441,7 +410,7 @@ h1.logo {
 
 @media screen and (max-width: 550px) {
   * {
-    font-size: 5vmin;
+    font-size: calc(7px + 2vmin);
   }
 
   .container {
@@ -451,20 +420,25 @@ h1.logo {
     justify-items: center;
     justify-content: center;
     text-align: center;
-    margin: 0;
     width: 100vw;
     height: 100vh;
     border-style: none;
     border-radius: 0;
+    margin: 0;
+    padding: 0;
   }
   .content {
-    font-size: 5vmin;
+    font-size: calc(10px + 2vmin);
+  }
+
+  .content2 {
+    margin:0;
   }
 
   h1.logo {
-    font-size: 14vmin;
+    font-size: calc(20px + 7vmin);
     margin: auto;
-    padding: 7vmin 1vmin;
+    padding: 5vmin 1vmin;
   }
 
   .madebyfooter {
@@ -476,6 +450,7 @@ h1.logo {
     justify-items: center;
     align-items: center;
     text-align: left;
+    margin: 1vmin;
   }
 
   .madebymessage {
@@ -493,17 +468,20 @@ h1.logo {
     grid-area: 4 / 1 / 5 / 2;
   }
 
+  #category {
+    display:none;
+  }
+
   .answersbtn {
-    padding: 0 10px;
-    min-height: 60px;
     width: 97%;
-    margin: 5px;
-    font-size: 1vw;
+  }
+
+  .footer {
+    min-height: 22vmin;
+  }
+
+  .btn {
+    margin: 1vmin 1vmin 4vmin 1vmin;
   }
 }
 
-@media screen and (min-width: 700px) {
-  /* h1.logo {
-    font-size: 75px;
-  } */
-}

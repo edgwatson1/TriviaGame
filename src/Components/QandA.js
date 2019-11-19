@@ -24,12 +24,12 @@ class QandA extends React.Component {
           <div className='question-box'>
             <QuestionBox questionStr={questionPackage.question} />
           </div>
-
+         {/*  <div className='content2'> */}
           <AnswerButs
             questionPackage={questionPackage}
             answerOptions={this.state.shuffledAnswers}
             onClickAnswer={onClickAnswer}
-          />
+          />{/* </div> */}
         </div>
         <div className="footer">
           {questionPackage.user_answer && (

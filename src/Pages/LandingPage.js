@@ -14,15 +14,12 @@ function LandingPage () {
         </h1>
         {/* landing page theme song */}
         
-
-        <div className='footer'>
         <audio src='/landing.mp3' autoPlay loop />
           <Link to='CategoryWheel'>
             <button className='btn'>
               <a href='#'>Play Now!</a>
             </button>
           </Link>
-        </div>
        
         <div className='madebyfooter'>
           
