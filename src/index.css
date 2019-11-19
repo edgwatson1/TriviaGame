@@ -13,22 +13,26 @@
   line-height: 1.5;
 }
 
-html, body {
+html,
+body {
   background: linear-gradient(aqua, Dodgerblue);
   height: 100vh;
   width: 100vw;
   position: absolute;
-  z-index:1;
-  top:0px;
-  left:0px;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
   margin: none;
   padding: none;
-  
 }
 
 h1 {
   font-size: calc(18px + 1vw);
-  line-height: 2;
+}
+
+h3 {
+  text-align: center;
+  font-size: calc(8px + 1vw);
 }
 
 .container {
@@ -46,7 +50,11 @@ h1 {
   /* overflow: auto; */
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  align-items: center;
   padding: 1vh;
 }
 
@@ -74,7 +82,7 @@ h1 {
   flex-grow: 1;
   align-items: center;
   text-align: center;
-  }
+}
 
 /* .footer {
   min-height: 50px;
@@ -109,7 +117,6 @@ h1 {
 .edward {
   grid-area: 2 / 3 / 3 / 4;
 }
-
 
 /* button */
 
@@ -173,6 +180,10 @@ a {
   box-shadow: inset 0 1px 0 #ffe5c4, inset 0 -3px 0 #915100;
 }
 
+.btnplayagain {
+  padding-top: 5vh;
+}
+
 .answersbtn {
   font-size: calc(6px + 1vw);
   background: blue;
@@ -186,7 +197,7 @@ a {
 }
 
 .answersbtn:hover {
-  box-shadow: 0px 0px 10px 2px #FFFFFF;
+  box-shadow: 0px 0px 10px 2px #ffffff;
 }
 
 .correctbtn {
@@ -243,6 +254,14 @@ h1.logo {
   height: 70%;
 }
 
+.completedgame img {
+  padding-bottom: 5vh;
+}
+
+.completedgame h2 {
+  padding-bottom: 5vh;
+}
+
 .scoreboard_bar {
   align-self: center;
   position: relative;
@@ -252,12 +271,45 @@ h1.logo {
   border: 4px solid black;
 }
 
+.spinner-message {
+  position: relative;
+  text-align: center;
+  padding: 25% 5% 15% 5%;
+  line-height: 170%;
+}
+
+.mario-thinkin-text {
+  padding: 20% 5% 5% 5%;
+  text-align: center;
+  line-height: 2;
+}
+
 .spinnergif {
   margin: 0 auto;
   text-align: center;
-  padding-top: 20%;
-  width: 100%;
-  height: 100%;
+  border-style: outset;
+  border-radius: 1em;
+  position: absolute;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timer-category-message {
+  font-size: calc(10px + 2.5vw);
+  position: relative;
+  text-align: center;
+  padding: 15% 5%;
+  line-height: 200%;
+}
+
+.timer {
+  font-size: calc(10px + 10vh);
+  position: relative;
+  text-align: center;
+  padding: 15%;
+  line-height: 170%;
 }
 
 .scoreboard_bar_fill {
@@ -301,6 +353,7 @@ h1.logo {
   font-size: calc(12px + 1vw);
   margin-bottom: 2vh;
   text-align: center;
+  line-height: 10;
 }
 
 .btn-correct {
@@ -387,70 +440,69 @@ h1.logo {
 }
 
 @media screen and (max-width: 550px) {
-    * {
-      font-size: 5vmin;
-    }
+  * {
+    font-size: 5vmin;
+  }
 
-    .container {
-      display: flex;
-      align-items: center;
-      align-content: center;
-      justify-items: center;
-      justify-content: center;
-      text-align: center;
-      margin: 0;
-      width: 100vw;
-      height: 100vh;
-      border-style: none;
-      border-radius: 0;
-    }
-    .content {
-      font-size: 5vmin;
-    }
+  .container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    border-style: none;
+    border-radius: 0;
+  }
+  .content {
+    font-size: 5vmin;
+  }
 
-    h1.logo {
-      font-size: 14vmin;
-      margin: auto;
-      padding: 7vmin 1vmin;
-    }
+  h1.logo {
+    font-size: 14vmin;
+    margin: auto;
+    padding: 7vmin 1vmin;
+  }
 
-    .madebyfooter {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr,auto);
-      grid-template-rows: repeat(4, 1fr, auto);
-      grid-column-gap: 0px;
-      grid-row-gap: 0px;
-      justify-items: center;
-      align-items: center;
-      text-align: left;
-    }
+  .madebyfooter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr, auto);
+    grid-template-rows: repeat(4, 1fr, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: center;
+    align-items: center;
+    text-align: left;
+  }
 
-    .madebymessage {
-      text-align: center;
-      grid-area: 1 / 1 / 2 / 3;
-    }
+  .madebymessage {
+    text-align: center;
+    grid-area: 1 / 1 / 2 / 3;
+  }
 
-    .alex {
-      grid-area: 2 / 1 / 3 / 2;
-    }
-    .david {
-      grid-area: 3 / 1 / 4 / 2;
-    }
-    .edward {
-      grid-area: 4 / 1 / 5 / 2;
-    }
-    
-    .answersbtn {
-      padding: 0 10px;
-      min-height: 60px;
-      width: 97%;
-      margin: 5px;
-      font-size: 1vw;
-    }
+  .alex {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+  .david {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  .edward {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+
+  .answersbtn {
+    padding: 0 10px;
+    min-height: 60px;
+    width: 97%;
+    margin: 5px;
+    font-size: 1vw;
+  }
 }
 
-  @media screen and (min-width: 700px) {
-
+@media screen and (min-width: 700px) {
   /* h1.logo {
     font-size: 75px;
   } */

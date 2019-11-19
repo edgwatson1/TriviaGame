@@ -22,7 +22,7 @@ class QandA extends React.Component {
       <>
         <div className='content'>
           <div className='question-box'>
-            <QuestionBox className="question-str" questionStr={questionPackage.question} />
+            <QuestionBox questionStr={questionPackage.question} />
           </div>
 
           <AnswerButs
