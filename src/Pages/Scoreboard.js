@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class Scoreboard extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.updateLevel()
   }
 
@@ -51,21 +51,22 @@ class Scoreboard extends React.Component {
     return (
       this.props.level < 5 &&
       `Only ${sum} more correct answers to level up to ${
-        this.state.images[this.props.level]['charname']
+      this.state.images[this.props.level]['charname']
       }!!`
+
     )
   }
 
   congratsMessage = () => {
-    if (this.state.level === 1) {
+    if (this.props.level === 1) {
       return "You're now Toad!"
-    } else if (this.state.level === 2) {
+    } else if (this.props.level === 2) {
       return 'Yes, Yoshi!! Stay on the Brain-train!!'
-    } else if (this.state.level === 3) {
+    } else if (this.props.level === 3) {
       return 'Big Boss Bowser!! The Architect of Intellect.'
-    } else if (this.state.level === 4) {
-      return "You've become royalty, Princess! You're the Quiz-Queen!!"
-    } else if (this.state.level === 5) {
+    } else if (this.props.level === 4) {
+      return "You've become royalty, Princess! You're a Quiz-Queen!!"
+    } else if (this.props.level === 5) {
       return "AAaaahhh YOU COMPLETED IT!! You're Mario! You know everything!! AAAAHHHHHHhhhhhhhh!!!"
     } else {
       return 'Keep flexing that intellect to level up!'
@@ -73,15 +74,15 @@ class Scoreboard extends React.Component {
   }
 
   whoIsBig = () => {
-    if (this.state.level === 1) {
+    if (this.props.level === 1) {
       return '/level1-cropped.png'
-    } else if (this.state.level === 2) {
+    } else if (this.props.level === 2) {
       return '/level2-cropped.png'
-    } else if (this.state.level === 3) {
+    } else if (this.props.level === 3) {
       return '/level3-cropped.png'
-    } else if (this.state.level === 4) {
+    } else if (this.props.level === 4) {
       return '/level4-cropped.png'
-    } else if (this.state.level === 5) {
+    } else if (this.props.level === 5) {
       return '/level5-cropped.png'
     }
   }
@@ -92,6 +93,8 @@ class Scoreboard extends React.Component {
       retfil => retfil.id !== this.state.level + 1
     )
     const { globalScore, level } = this.props;
+
+
 
     return (
       <>
@@ -118,7 +121,7 @@ class Scoreboard extends React.Component {
             <div>
               <h1 className='char-announcement'>{this.congratsMessage()}</h1>
             </div>
-            
+
             <div className='char-grid'>
               {/* big character */}
               <div className='big-pic big-char-row'>
@@ -131,7 +134,7 @@ class Scoreboard extends React.Component {
               {/* small characters */}
               <div
                 className={
-                  this.state.level === 1
+                  this.props.level === 1
                     ? 'toad small-char-row-invisible'
                     : 'toad small-char-row-faded'
                 }
@@ -140,7 +143,7 @@ class Scoreboard extends React.Component {
               </div>
               <div
                 className={
-                  this.state.level === 2
+                  this.props.level === 2
                     ? 'yoshi small-char-row-invisible'
                     : 'yoshi small-char-row-faded'
                 }
@@ -149,7 +152,7 @@ class Scoreboard extends React.Component {
               </div>
               <div
                 className={
-                  this.state.level === 3
+                  this.props.level === 3
                     ? 'bowser small-char-row-invisible'
                     : 'bowser small-char-row-faded'
                 }
@@ -158,7 +161,7 @@ class Scoreboard extends React.Component {
               </div>
               <div
                 className={
-                  this.state.level === 4
+                  this.props.level === 4
                     ? 'princess small-char-row-invisible'
                     : 'princess small-char-row-faded'
                 }
@@ -167,7 +170,7 @@ class Scoreboard extends React.Component {
               </div>
               <div
                 className={
-                  this.state.level === 5
+                  this.props.level === 5
                     ? 'mario small-char-row-invisible'
                     : 'mario small-char-row-faded'
                 }
@@ -179,7 +182,7 @@ class Scoreboard extends React.Component {
             <div>
               <h2 className='qns-to-progress'>{this.qnsToProgressMessage()}</h2>
             </div>
-            </div>      
+          </div>
           <div className='footer'>
             <Link to='/CategoryWheel'>
               <button className='btn'>
@@ -187,7 +190,7 @@ class Scoreboard extends React.Component {
               </button>
             </Link>
           </div>
-      </div>
+        </div>
       </>
     )
   }
