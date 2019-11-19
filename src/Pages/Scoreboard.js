@@ -58,15 +58,15 @@ class Scoreboard extends React.Component {
 
   congratsMessage = () => {
     if (this.props.level === 1) {
-      return "You're now Toad!";
+      return "You Are Now Toad!";
     } else if (this.props.level === 2) {
-      return "Yes, Yoshi!! Stay on the Brain-train!!";
+      return "Yes, Yoshi! Stay On The Brain-Train!";
     } else if (this.props.level === 3) {
-      return "Big Boss Bowser!! The Architect of Intellect.";
+      return "Big Boss Bowser! The Architect Of Intellect.";
     } else if (this.props.level === 4) {
-      return "You've become royalty, Princess! You're a Quiz-Queen!!";
+      return "You've Become Royalty, Princess! You're A Quiz-Queen!";
     } else {
-      return "Keep flexing that intellect to level up!";
+      return "Keep Flexing That Intellect To Level Up!";
     }
   };
 
@@ -95,7 +95,7 @@ class Scoreboard extends React.Component {
       const overallTimeSnapshot = overallTime;
       return (
         <div className="container completedgame">
-          <div className="content2">
+          <div className="content">
             <img src="./rotating star.gif" height="50px" />
             <h2>
               You've completed the game!<br /><br />Mario wants you on the leaderboard!
@@ -126,22 +126,22 @@ class Scoreboard extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <img src="./mariocoin.png" height="40px" />
+                    <img src="./mariocoin.png" height="40vmin" />
                   </td>
 
                   <td>
-                    <h3>TOTAL SCORE: {globalScore}</h3>
+                    <h2>TOTAL SCORE: {globalScore}</h2>
                   </td>
                   <td>
-                    <img src="./mariocoin.png" height="40px" />
+                    <img src="./mariocoin.png" height="40vmin" />
                   </td>
                 </tr>
               </tbody>
             </table>
-            <div className="content2">
+            <div className="spinner-message">
               <audio src="/score.mp3" autoPlay loop />
               <div>
-                <h1 className="char-announcement">{this.congratsMessage()}</h1>
+                <h2>{this.congratsMessage()}</h2>
               </div>
 
               <div className="char-grid">
@@ -161,7 +161,7 @@ class Scoreboard extends React.Component {
                       : "toad small-char-row-faded"
                   }
                 >
-                  <img src="/level1-cropped.png" alt="toad" height="75vh" />
+                  <img src="/level1-cropped.png" alt="toad" height="75vmin" />
                 </div>
                 <div
                   className={
@@ -170,7 +170,7 @@ class Scoreboard extends React.Component {
                       : "yoshi small-char-row-faded"
                   }
                 >
-                  <img src="/level2-cropped.png" alt="yoshi" height="75vh" />
+                  <img src="/level2-cropped.png" alt="yoshi" height="75vmin" />
                 </div>
                 <div
                   className={
@@ -179,7 +179,7 @@ class Scoreboard extends React.Component {
                       : "bowser small-char-row-faded"
                   }
                 >
-                  <img src="/level3-cropped.png" alt="bowser" height="75vh" />
+                  <img src="/level3-cropped.png" alt="bowser" height="75vmin" />
                 </div>
                 <div
                   className={
@@ -188,7 +188,7 @@ class Scoreboard extends React.Component {
                       : "princess small-char-row-faded"
                   }
                 >
-                  <img src="/level4-cropped.png" alt="princess" height="75vh" />
+                  <img src="/level4-cropped.png" alt="princess" height="75vmin" />
                 </div>
                 <div
                   className={
@@ -197,7 +197,7 @@ class Scoreboard extends React.Component {
                       : "mario small-char-row-faded"
                   }
                 >
-                  <img src="/level5-cropped.png" alt="mario" height="75vh" />
+                  <img src="/level5-cropped.png" alt="mario" height="75vmin" />
                 </div>
               </div>
 
@@ -207,13 +207,14 @@ class Scoreboard extends React.Component {
                 </h2>
               </div>
             </div>
+
             <div className="footer">
               <Link to="/CategoryWheel">
                 <button className="btn">
                   <a href="/CategoryWheel">
                     {" "}
-                    Click To<br></br>Continue...
-                  </a>
+                    Play Again!
+                    </a>
                 </button>
               </Link>
             </div>
