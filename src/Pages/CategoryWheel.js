@@ -41,19 +41,22 @@ class CategoryWheel extends React.Component {
 
     if (this.state.timerIsRunning === false) {
       return (
-        <div class="container">
-          <div class="content">
-            <h1 class="spinner intro">
-              Click below to pick a category at random!
-            </h1>
+        <div className="container">
+          <div className="content content3">
+            <h1> Click below to pick a category at random!</h1>
+          </div>
+          <div class="footer">
             <button
-              id="btn-spin"
+              className="btn"
               onClick={event => {
                 this.startTimer();
                 fetchQuestions();
               }}
             >
-              Spin!
+              <a href="#">
+                Spin The<br></br>
+                Wheel!
+              </a>
             </button>
           </div>
         </div>
@@ -61,8 +64,8 @@ class CategoryWheel extends React.Component {
     } else {
       if (this.state.time > 3) {
         return (
-          <div class="container">
-            <div class="spinnergif">
+          <div className="container">
+            <div className="spinnergif">
               <img
                 src="https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif"
                 alt="category spinner wheel"

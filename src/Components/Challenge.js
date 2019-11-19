@@ -22,12 +22,13 @@ class Challenge extends React.Component {
     }
     return (
       <>
-        <div class="container">
+        <div className="container">
+          <audio src="/q_a.mp3" autoPlay loop />
           <table className="challenge-header">
             <tbody>
               <tr>
                 <td className="challenge-header-cell">
-                  <img src={characters[level].img} />
+                  <img src={characters[level - 1].img} />
                 </td>
                 <td className="challenge-header-cell" rowspan="2" id="category">
                   {decodeURIComponent(category)} ROUND

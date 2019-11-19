@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 function LandingPage () {
   return (
     <>
-      <div class='container'>
-        <h1 class='logo'>
+      <div className='container'>
+        <h1 className='logo'>
           SUPER
           <br />
           TRIVIA
@@ -13,36 +13,45 @@ function LandingPage () {
           GAME
         </h1>
         {/* landing page theme song */}
-        <audio src='/landing.mp3' autoPlay loop hidden />
+        
 
-        <div class='footer'>
+        <div className='footer'>
+        <audio src='/landing.mp3' autoPlay loop />
           <Link to='CategoryWheel'>
-            <button class='btn'>
-              <a href='#'>Play Now!</a>
+            <button className='btn'>
+              <a href='#'>Play<br></br>Now!</a>
             </button>
           </Link>
         </div>
+       
+        <div className='madebyfooter'>
+          
+          <div className='madebymessage'>Made with love by:</div>
 
-        <div class='madebyfooter'>
-          <div class='david'>
-            <img src='avatardavid.png' height='80px' /> <br />
-            David
-            <br />
-            Saiote
-          </div>
-          <div class='alex'>
+          <div className='alex'>
             <img src='avataralex.png' height='80px' /> <br />
-            Alex <br />
-            Lawry-White
           </div>
-          <div class='edward'>
+    
+          <div className='david'>
+            <img src='avatardavid.png' height='80px' /> <br />
+          </div>
+          
+          <div className='edward'>
             <img src='avataredward.png' height='80px' /> <br />
-            Edward
-            <br />
-            Watson
-            <br /> <br />
           </div>
-          <div class='madebymessage'>Made with love by:</div>
+          
+          <div>
+            Alex Lawry-White
+          </div>
+
+          <div>
+            David Saiote
+          </div>
+
+          <div> 
+            Edward Watson
+          </div>
+
         </div>
       </div>
     </>

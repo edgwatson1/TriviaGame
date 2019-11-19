@@ -9,16 +9,16 @@ const AnswerClick = ({ answer, onClickAnswer, questionPackage }) => {
         questionPackage.user_answer &&
         answer !== questionPackage.correct_answer &&
         answer === questionPackage.user_answer
-          ? "btn-incorrect"
+          ? "incorrectbtn"
           : ""
       } 
       ${
         questionPackage.user_answer && answer === questionPackage.correct_answer
-          ? "btn-correct"
+          ? "correctbtn"
           : ""
-      } ans-btn`}
+      } answersbtn`}
     >
-      {decodeURIComponent(answer)}
+      <a href="#">{decodeURIComponent(answer)}</a>
     </button>
   );
 };
