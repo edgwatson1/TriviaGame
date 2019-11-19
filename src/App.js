@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      step: 8,
+      step: 0,
       localScore: 0,
       globalScore: 0,
       totalScore: this.localScore + this.globalScore,
