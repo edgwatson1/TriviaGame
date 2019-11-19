@@ -5,7 +5,7 @@ class CategoryWheel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 1,
+      time: 6,
       timerIsRunning: false
     };
 
@@ -42,10 +42,10 @@ class CategoryWheel extends React.Component {
     if (this.state.timerIsRunning === false) {
       return (
         <div className="container">
-          <div className="content content3">
-            <h1> Click below to pick a category at random!</h1>
-          </div>
-          <div class="footer">
+
+          <h1 className="spinner-message"> Click below to pick a category at random!</h1>
+
+          <div className="footer">
             <button
               className="btn"
               onClick={event => {
@@ -54,7 +54,8 @@ class CategoryWheel extends React.Component {
               }}
             >
               <a href="#">
-                Spin The<br></br>
+                Spin the
+                <br />
                 Wheel!
               </a>
             </button>
@@ -65,22 +66,21 @@ class CategoryWheel extends React.Component {
       if (this.state.time > 3) {
         return (
           <div className="container">
-            <div className="spinnergif">
-              <img
-                src="https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif"
-                alt="category spinner wheel"
-              />
-            </div>
+            <p className="mario-thinkin-text">Mario's a-dreamin' up a category</p>
+            <img
+              className="spinnergif"
+              src="https://media.giphy.com/media/SPB2DnJt1oB8c/giphy.gif"
+              alt="category spinner wheel"
+            />
           </div>
         );
       } else {
         return (
-          <div class="container">
-            <div class="content">
-              {this.renderRedirect2()}
-              <h2>{decodeURIComponent(categoryName)}</h2>
-              <p class="timer">{this.state.time}</p>
-            </div>
+          <div className="container">
+            {this.renderRedirect2()}
+            <h2 className="timer-category-message">{decodeURIComponent(categoryName)} Round</h2>
+            <p>Starting in...</p>
+            <p className="timer">{this.state.time}</p>
           </div>
         );
       }
