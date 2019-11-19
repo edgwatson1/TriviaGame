@@ -1,5 +1,5 @@
-import React from 'react'
-import AnswerClick from './AnswerClick'
+import React from "react";
+import AnswerClick from "./AnswerClick";
 
 const AnswerButs = ({ answerOptions, onClickAnswer, questionPackage }) => {
   return (
@@ -12,10 +12,10 @@ const AnswerButs = ({ answerOptions, onClickAnswer, questionPackage }) => {
             key={answer}
             questionPackage={questionPackage}
           />
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default AnswerButs
+export default AnswerButs;

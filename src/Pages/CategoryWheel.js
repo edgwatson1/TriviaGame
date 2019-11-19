@@ -1,91 +1,91 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
+import React from "react";
+import { Redirect } from "react-router-dom";
 
 class CategoryWheel extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       time: 1,
       timerIsRunning: false
-    }
+    };
 
-    this.startTimer = this.startTimer.bind(this)
-    this.renderRedirect2 = this.renderRedirect2.bind(this)
+    this.startTimer = this.startTimer.bind(this);
+    this.renderRedirect2 = this.renderRedirect2.bind(this);
   }
 
-  startTimer () {
+  startTimer() {
     this.setState({
       timerIsRunning: true
-    })
+    });
     this.timer = setInterval(
       () =>
         this.setState({
           time: this.state.time - 1
         }),
       1000
-    )
+    );
   }
 
   renderRedirect2 = () => {
     if (this.state.time < 1) {
-      return <Redirect to='/Challenge' />
+      return <Redirect to="/Challenge" />;
     }
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
-  componentWillUnmount () {
-    clearInterval(this.timer)
-  }
-
-  render () {
-    const { fetchQuestions, categoryName } = this.props
+  render() {
+    const { fetchQuestions, categoryName } = this.props;
 
     if (this.state.timerIsRunning === false) {
       return (
-        <div className='container'>
-          <div className='content content3'>
-            <h1>
-              {' '}
-              Click below to pick a category at random!
-            </h1>
+        <div className="container">
+          <div className="content content3">
+            <h1> Click below to pick a category at random!</h1>
           </div>
           <div class="footer">
-            <button className="btn"
+            <button
+              className="btn"
               onClick={event => {
-                this.startTimer()
-                fetchQuestions()
+                this.startTimer();
+                fetchQuestions();
               }}
-            ><a href='#'>
-              Spin The<br></br>
-              Wheel!
-            </a></button>
-            </div>
+            >
+              <a href="#">
+                Spin The<br></br>
+                Wheel!
+              </a>
+            </button>
+          </div>
         </div>
-      )
+      );
     } else {
       if (this.state.time > 3) {
         return (
-          <div className='container'>
-            <div className='spinnergif'>
+          <div className="container">
+            <div className="spinnergif">
               <img
-                src='https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif'
-                alt='category spinner wheel'
+                src="https://media.giphy.com/media/D4z5qrV4s9e4o/giphy.gif"
+                alt="category spinner wheel"
               />
             </div>
           </div>
-        )
+        );
       } else {
         return (
-          <div className='container'>
-            <div className='content'>
+          <div class="container">
+            <div class="content">
               {this.renderRedirect2()}
-              <h2>{categoryName}</h2>
-              <p className='timer'>{this.state.time}</p>
+              <h2>{decodeURIComponent(categoryName)}</h2>
+              <p class="timer">{this.state.time}</p>
             </div>
           </div>
-        )
+        );
       }
     }
   }
 }
 
-export default CategoryWheel
+export default CategoryWheel;
