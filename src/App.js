@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      step: 8,
+      step: 0,
       localScore: 0,
       globalScore: 0,
       totalScore: this.localScore + this.globalScore,
@@ -115,7 +115,7 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render() {
-    console.log('level', this.state.level);
+    console.log("level", this.state.level);
     return (
       <BrowserRouter>
         {this.renderRedirect()}
