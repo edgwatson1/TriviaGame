@@ -186,7 +186,7 @@ class Scoreboard extends React.Component {
           <div className='footer'>
             <Link to='/CategoryWheel'>
               <button className='btn'>
-                <a href='/CategoryWheel'> Click To<br></br>Continue...</a>
+                <a href='/CategoryWheel'> Click To Continue...</a>
               </button>
             </Link>
           </div>

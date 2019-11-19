@@ -36,8 +36,7 @@ class QandA extends React.Component {
 
             <button className='btn' onClick={onNextStep}>
               <a href='#'>
-                Next<br></br>
-                Question</a>
+                Next Question</a>
             </button>
 
           )}

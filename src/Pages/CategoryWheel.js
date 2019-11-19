@@ -54,8 +54,7 @@ class CategoryWheel extends React.Component {
               }}
             >
               <a href="#">
-                Spin The<br></br>
-                Wheel!
+                Spin The Wheel!
               </a>
             </button>
           </div>
