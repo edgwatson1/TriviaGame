@@ -115,7 +115,7 @@ class App extends React.Component {
   // inside class components your methods don't need a const
 
   render() {
-    console.log('level', this.state.level);
+    console.log("level", this.state.level);
     return (
       <BrowserRouter>
         {this.renderRedirect()}
