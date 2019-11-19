@@ -39,6 +39,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAHh8D3sVAUztD4izgYthULQAVRNHsmZWI",
+      authDomain: "trivia-mario.firebaseapp.com",
+      databaseURL: "https://trivia-mario.firebaseio.com",
+      projectId: "trivia-mario",
+      storageBucket: "trivia-mario.appspot.com",
+      messagingSenderId: "1013685039464",
+      appId: "1:1013685039464:web:f9a9812d7bc37ce65566dd",
+      measurementId: "G-G92PMGEEPK"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 </body>
 
 </html>
