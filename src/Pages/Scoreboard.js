@@ -94,28 +94,55 @@ class Scoreboard extends React.Component {
     if (this.props.level === 5) {
       const overallTimeSnapshot = overallTime;
       return (
-        <div className="container completedgame">
-          <div className="content">
-            <img src="./rotating star.gif" height="50px" />
-            <h2>
-              You've completed the game!<br /><br />Mario wants you on the leaderboard!
-            </h2>
-            <img
-              src="https://media.giphy.com/media/SPB2DnJt1oB8c/giphy.gif"
-              height="150vh"
+        <div className="container">
+
+          <h1 className="spinner-message">
+          <audio src="/score.mp3" autoPlay loop />
+          <div>
+          <img 
+            className="rotatingstar"
+            src="./rotatingstar.gif" 
+            alt="rotating star"
             />
-            <footer>
-              <form>
-                <label>
-                  Name:
-                <input type="text" maxLength="3" />
-                </label>
-              </form>
-              <button className="btn" >
-                <a href="/Leaderboard">Submit</a>
-              </button>
-            </footer>
-          </div>
+            <img 
+            className="rotatingstar"
+            src="./rotatingstar.gif" 
+            alt="rotating star"
+            />
+            <img 
+            className="rotatingstar"
+            src="./rotatingstar.gif" 
+            alt="rotating star"
+            />
+            </div>
+            <h2>
+            You've Completed The Game!
+            Mario Wants You On The Leaderboard!
+            </h2>
+            
+            <div>
+            <img
+              className="spinnergif"
+              src="./mariodance.gif"
+              alt="category spinner wheel"
+            />
+            </div>
+
+            <div>
+            <form>
+            <label>
+            Name:
+            <input type="text" maxLength="3" />
+            </label>
+            </form>
+            </div>
+          </h1>
+
+          <footer>
+            <button className="btn">
+            <a href="/Leaderboard">Submit</a>
+            </button>
+          </footer>
         </div>
       );
     } else {
