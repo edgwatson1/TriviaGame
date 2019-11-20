@@ -98,7 +98,9 @@ class Scoreboard extends React.Component {
         <div className="container">
 
           <h1 className="spinner-message">
-            <audio src="/score.mp3" autoPlay loop />
+            
+        
+            <audio src='/score.mp3' autoPlay loop />
             <div>
               <img
                 className="rotatingstar"
@@ -138,6 +140,9 @@ class Scoreboard extends React.Component {
       return (
         <>
             <div className="container">
+
+            <audio src='/score.mp3' autoPlay loop />
+
               <table className="table-head">
                 <tbody>
                   <tr>
