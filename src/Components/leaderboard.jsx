@@ -29,6 +29,7 @@ const Leaderboard = () => {
 
     return (
         <div className="container">
+            <audio src="/score.mp3" autoPlay loop />
             <h1 className="spinner-message">
                 LeaderBoard
                 </h1>
