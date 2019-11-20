@@ -408,6 +408,7 @@ h1.logo {
   opacity: 0.075;
 }
 
+
 @media screen and (max-width: 550px) {
   * {
     font-size: calc(7px + 2vmin);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const Leaderboard = (props) => {
+const LeaderboardOrig = (props) => {
     return (
         <>
             <h1>placefiller</h1>
@@ -16,4 +16,4 @@ const Leaderboard = (props) => {
     )
 }
 
-export default Leaderboard
+export default LeaderboardOrig

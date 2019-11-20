@@ -24,7 +24,7 @@ class Challenge extends React.Component {
     return (
       <>
         <div className="container">
-          <audio src="/q_a.mp3" autoPlay loop />
+          {/* <audio src="/q_a.mp3" autoPlay loop /> */}
           <table className="challenge-header">
             <tbody>
               <tr>

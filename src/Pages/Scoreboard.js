@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import AddLeader from "../Components/add-leader"
 
 class Scoreboard extends React.Component {
   componentDidMount() {
@@ -92,7 +93,7 @@ class Scoreboard extends React.Component {
     const { globalScore, level, overallTime } = this.props;
 
     if (this.props.level === 5) {
-      const overallTimeSnapshot = overallTime;
+
       return (
         <div className="container completedgame">
           <div className="content">
@@ -105,15 +106,7 @@ class Scoreboard extends React.Component {
               height="150vh"
             />
             <footer>
-              <form>
-                <label>
-                  Name:
-                <input type="text" maxLength="3" />
-                </label>
-              </form>
-              <button className="btn" >
-                <a href="/Leaderboard">Submit</a>
-              </button>
+              <AddLeader overallTime={overallTime} />
             </footer>
           </div>
         </div>
@@ -139,7 +132,7 @@ class Scoreboard extends React.Component {
               </tbody>
             </table>
             <div className="spinner-message">
-              <audio src="/score.mp3" autoPlay loop />
+              {/* <audio src="/score.mp3" autoPlay loop /> */}
               <div>
                 <h2>{this.congratsMessage()}</h2>
               </div>

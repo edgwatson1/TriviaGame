@@ -2,14 +2,17 @@ import React from "react";
 
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import firebase from "./firebase.js";
 import Challenge from "./Components/Challenge";
+import Leaderboard from "./Components/leaderboard"
 import LandingPage from "./Pages/LandingPage";
 import CategoryWheel from "./Pages/CategoryWheel";
 import Scoreboard from "./Pages/Scoreboard";
-import Leaderboard from "./Pages/Leaderboard"
+import LeaderboardOrig from "./Pages/LeaderboardOrig"
 import countScore from "./Helpers/countScore";
 import checkLevel from "./Helpers/checkLevel";
 import "./App.css";
+
 
 // App Component
 
@@ -49,17 +52,27 @@ class App extends React.Component {
     });
   };
 
+
+
   // TIMES HOW LONG THE WHOLE GAME TOO TO ESTABLISH LEADERBOARD POSITION
   startOverallTimer() {
-    this.timer = setInterval(
-      () =>
-        this.setState({
-          overallTime: this.state.overallTime + 1
-        }),
-      1000
-    );
-
+    if (this.state.level < 5) {
+      this.timer = setInterval(
+        () =>
+          this.setState((prevState) => {
+            return prevState.level < 5 ? {
+              ...prevState,
+              overallTime: this.state.overallTime + 1
+            } : { ...prevState }
+          }),
+        1000
+      )
+    }
   }
+
+
+
+
 
   // REDIRECTION TO SCOREBOARD PAGE WHEN STATE REACHES 10
   renderRedirect = () => {
@@ -131,6 +144,7 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.overallTime);
+
     return (
       <BrowserRouter>
         {this.renderRedirect()}
@@ -167,6 +181,7 @@ class App extends React.Component {
               level={this.state.level}
               overallTime={this.state.overallTime}
             />
+            {/* <AddLeader overallTime={this.state.overallTime} /> */}
           </Route>
           <Route path="/Leaderboard">
             <Leaderboard />
