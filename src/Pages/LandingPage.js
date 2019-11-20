@@ -13,9 +13,10 @@ function LandingPage({ startOverallTimer }) {
           <br />
           GAME
         </h1>
+        
         {/* landing page theme song */}
-
         <audio src='/landing.mp3' autoPlay loop />
+
         <Link to='CategoryWheel'>
           <button
             className='btn'

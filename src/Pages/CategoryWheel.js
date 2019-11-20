@@ -42,6 +42,10 @@ class CategoryWheel extends React.Component {
     if (this.state.timerIsRunning === false) {
       return (
         <div className="container">
+
+        {/* category wheel coin sound */}
+        <audio src='/coin.mp3' autoPlay/>
+
           <h1 className="spinner-message">
             {" "}
             Click Below To Pick A Category At Random!
@@ -68,6 +72,8 @@ class CategoryWheel extends React.Component {
         return (
           <div className="container">
             <div>
+              {/* mario let's go sound */}
+              <audio src='/letsgo.mp3' autoPlay/>
               <h1>
                 Mario's A-Dreamin' Up<br></br> A Category For You!
               </h1>
@@ -75,7 +81,7 @@ class CategoryWheel extends React.Component {
             <div>
             <img
               className="spinnergif"
-              src="https://media.giphy.com/media/SPB2DnJt1oB8c/giphy.gif"
+              src="./mariodance.gif"
               alt="category spinner wheel"
             />
             </div>
@@ -89,8 +95,14 @@ class CategoryWheel extends React.Component {
             <h1 className="timer-category-message">
               {decodeURIComponent(categoryName)} Round
             </h1>
+            
+            {/* mario pipe sound */}
+            <audio src='/pipe.mp3' autoPlay/>
+
             <h2>Starting In...</h2>
-            <p className="timer">{this.state.time}</p>
+
+            <h1 className="timer">{this.state.time}
+            </h1>
           </div>
         );
       }
