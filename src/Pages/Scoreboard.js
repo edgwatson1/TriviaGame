@@ -95,127 +95,149 @@ class Scoreboard extends React.Component {
     if (this.props.level === 5) {
 
       return (
-        <div className="container completedgame">
-          <div className="content">
-            <img src="./rotating star.gif" height="50px" />
+        <div className="container">
+
+          <h1 className="spinner-message">
+            <audio src="/score.mp3" autoPlay loop />
+            <div>
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+            </div>
             <h2>
-              You've completed the game!<br /><br />Mario wants you on the leaderboard!
+              You've Completed The Game!
+              Mario Wants You On The Leaderboard!
             </h2>
-            <img
-              src="https://media.giphy.com/media/SPB2DnJt1oB8c/giphy.gif"
-              height="150vh"
-            />
-            <footer>
-              <AddLeader overallTime={overallTime} />
-            </footer>
-          </div>
+
+            <div>
+              <img
+                className="spinnergif"
+                src="./mariodance.gif"
+                alt="category spinner wheel"
+              />
+              <footer>
+                <AddLeader overallTime={overallTime} />
+              </footer>
+            </div>
         </div>
-      );
+          );
     } else {
       return (
         <>
-          <div className="container">
-            <table className="table-head">
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="./mariocoin.png" height="40vmin" />
-                  </td>
+            <div className="container">
+              <table className="table-head">
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="./mariocoin.png" height="40vmin" />
+                    </td>
 
-                  <td>
-                    <h2>TOTAL SCORE: {globalScore}</h2>
-                  </td>
-                  <td>
-                    <img src="./mariocoin.png" height="40vmin" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="spinner-message">
-              {/* <audio src="/score.mp3" autoPlay loop /> */}
-              <div>
-                <h2>{this.congratsMessage()}</h2>
+                    <td>
+                      <h2>TOTAL SCORE: {globalScore}</h2>
+                    </td>
+                    <td>
+                      <img src="./mariocoin.png" height="40vmin" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="spinner-message">
+                {/* <audio src="/score.mp3" autoPlay loop /> */}
+                <div>
+                  <h2>{this.congratsMessage()}</h2>
+                </div>
+
+                <div className="char-grid">
+                  {/* big character */}
+                  <div className="big-pic big-char-row">
+                    <img
+                      className="big-pic-style"
+                      src={this.whoIsBig()}
+                      alt="current character"
+                    />
+                  </div>
+                  {/* small characters */}
+                  <div
+                    className={
+                      this.props.level === 1
+                        ? "toad small-char-row-invisible"
+                        : "toad small-char-row-faded"
+                    }
+                  >
+                    <img src="/level1-cropped.png" alt="toad" height="75vmin" />
+                  </div>
+                  <div
+                    className={
+                      this.props.level === 2
+                        ? "yoshi small-char-row-invisible"
+                        : "yoshi small-char-row-faded"
+                    }
+                  >
+                    <img src="/level2-cropped.png" alt="yoshi" height="75vmin" />
+                  </div>
+                  <div
+                    className={
+                      this.props.level === 3
+                        ? "bowser small-char-row-invisible"
+                        : "bowser small-char-row-faded"
+                    }
+                  >
+                    <img src="/level3-cropped.png" alt="bowser" height="75vmin" />
+                  </div>
+                  <div
+                    className={
+                      this.props.level === 4
+                        ? "princess small-char-row-invisible"
+                        : "princess small-char-row-faded"
+                    }
+                  >
+                    <img src="/level4-cropped.png" alt="princess" height="75vmin" />
+                  </div>
+                  <div
+                    className={
+                      this.props.level === 5
+                        ? "mario small-char-row-invisible"
+                        : "mario small-char-row-faded"
+                    }
+                  >
+                    <img src="/level5-cropped.png" alt="mario" height="75vmin" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="qns-to-progress">
+                    {this.qnsToProgressMessage()}
+                  </h2>
+                </div>
               </div>
 
-              <div className="char-grid">
-                {/* big character */}
-                <div className="big-pic big-char-row">
-                  <img
-                    className="big-pic-style"
-                    src={this.whoIsBig()}
-                    alt="current character"
-                  />
-                </div>
-                {/* small characters */}
-                <div
-                  className={
-                    this.props.level === 1
-                      ? "toad small-char-row-invisible"
-                      : "toad small-char-row-faded"
-                  }
-                >
-                  <img src="/level1-cropped.png" alt="toad" height="75vmin" />
-                </div>
-                <div
-                  className={
-                    this.props.level === 2
-                      ? "yoshi small-char-row-invisible"
-                      : "yoshi small-char-row-faded"
-                  }
-                >
-                  <img src="/level2-cropped.png" alt="yoshi" height="75vmin" />
-                </div>
-                <div
-                  className={
-                    this.props.level === 3
-                      ? "bowser small-char-row-invisible"
-                      : "bowser small-char-row-faded"
-                  }
-                >
-                  <img src="/level3-cropped.png" alt="bowser" height="75vmin" />
-                </div>
-                <div
-                  className={
-                    this.props.level === 4
-                      ? "princess small-char-row-invisible"
-                      : "princess small-char-row-faded"
-                  }
-                >
-                  <img src="/level4-cropped.png" alt="princess" height="75vmin" />
-                </div>
-                <div
-                  className={
-                    this.props.level === 5
-                      ? "mario small-char-row-invisible"
-                      : "mario small-char-row-faded"
-                  }
-                >
-                  <img src="/level5-cropped.png" alt="mario" height="75vmin" />
-                </div>
-              </div>
-
-              <div>
-                <h2 className="qns-to-progress">
-                  {this.qnsToProgressMessage()}
-                </h2>
-              </div>
-            </div>
-
-            <div className="footer">
-              <Link to="/CategoryWheel">
-                <button className="btn">
-                  <a href="/CategoryWheel">
-                    {" "}
-                    Play Again!
+              <div className="footer">
+                <Link to="/CategoryWheel">
+                  <button className="btn">
+                    <a href="/CategoryWheel">
+                      {" "}
+                      Play Again!
                     </a>
-                </button>
-              </Link>
+                  </button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </>
-      );
+          </>
+          );
+        }
+      };
     }
-  };
-}
-
-export default Scoreboard;
+    
+    export default Scoreboard;

@@ -82,7 +82,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(autofit, 3, 1fr);
   grid-template-rows: repeat(autofit, 4, 1fr);
-  grid-column-gap: 2vmin;
+  grid-column-gap: 5vmin;
   justify-items: center;
   text-align: center;
 }
@@ -227,13 +227,13 @@ h1.logo {
   height: 70%;
 }
 
-.completedgame img {
+/* .completedgame img {
   padding-bottom: 5vh;
 }
 
 .completedgame h2 {
   padding-bottom: 5vh;
-}
+} */
 
 .scoreboard_bar {
   align-self: center;
@@ -263,23 +263,21 @@ h1.logo {
   margin: 4vmin;
   border-style: outset;
   border-radius: 1em;
-  width: 40%;
+  width: 30%;
+}
+
+.rotatingstar {
+  margin: 1vmin;
+  width: 10%;
 }
 
 .timer-category-message {
-  font-size: calc(10px + 2.5vw);
-  position: relative;
-  text-align: center;
-  padding: 15% 5%;
-  line-height: 200%;
+  padding: 10%;
 }
 
 .timer {
-  font-size: calc(10px + 10vh);
-  position: relative;
-  text-align: center;
-  padding: 15%;
-  line-height: 170%;
+  font-size: calc(10px + 10vmin);
+  padding: 10%;
 }
 
 .scoreboard_bar_fill {
