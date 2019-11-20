@@ -29,7 +29,9 @@ const Leaderboard = () => {
 
     return (
         <div className="container">
-            <h1>LeaderBoard</h1>
+            <h1 className="spinner-message">
+                LeaderBoard
+                </h1>
             <br />
             <div>
                 <label>Sort By:</label>{' '}
@@ -52,6 +54,7 @@ const Leaderboard = () => {
                     </li>
                 )}
             </ol>
+            <div className="footer">
             <button
                 className="btn btnplayagain"
                 value="Refresh Page"
@@ -59,6 +62,7 @@ const Leaderboard = () => {
             >
                 <a href="/">Play Again</a>
             </button>
+            </div>
         </div>
     )
 }

@@ -127,10 +127,11 @@ class Scoreboard extends React.Component {
                 src="./mariodance.gif"
                 alt="category spinner wheel"
               />
+            </div>
               <footer>
                 <AddLeader overallTime={overallTime} />
               </footer>
-            </div>
+            </h1>
         </div>
           );
     } else {
