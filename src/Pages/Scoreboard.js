@@ -97,67 +97,73 @@ class Scoreboard extends React.Component {
       return (
         <div className="container">
 
-          <h1 className="spinner-message" />
-          <audio src="/score.mp3" autoPlay loop />
-          <div>
-            <img
-              className="rotatingstar"
-              src="./rotatingstar.gif"
-              alt="rotating star"
-            />
-            <img
-              className="rotatingstar"
-              src="./rotatingstar.gif"
-              alt="rotating star"
-            />
-            <img
-              className="rotatingstar"
-              src="./rotatingstar.gif"
-              alt="rotating star"
-            />
-          </div>
-          <h2>
-            You've Completed The Game!
-            Mario Wants You On The Leaderboard!
+          <h1 className="spinner-message">
+            
+        
+            <audio src='/score.mp3' autoPlay loop />
+            <div>
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+              <img
+                className="rotatingstar"
+                src="./rotatingstar.gif"
+                alt="rotating star"
+              />
+            </div>
+            <h2>
+              You've Completed The Game!
+              Mario Wants You On The Leaderboard!
             </h2>
 
-          <div>
-            <img
-              className="spinnergif"
-              src="./mariodance.gif"
-              alt="category spinner wheel"
-            />
-            <footer>
-              <AddLeader overallTime={overallTime} />
-            </footer>
-          </div>
+            <div>
+              <img
+                className="spinnergif"
+                src="./mariodance.gif"
+                alt="category spinner wheel"
+              />
+            </div>
+              <footer>
+                <AddLeader overallTime={overallTime} />
+              </footer>
+            </h1>
         </div>
       );
     } else {
       return (
         <>
-          <div className="container">
-            <table className="table-head">
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="./mariocoin.png" height="40vmin" />
-                  </td>
+            <div className="container">
 
-                  <td>
-                    <h2>TOTAL SCORE: {globalScore}</h2>
-                  </td>
-                  <td>
-                    <img src="./mariocoin.png" height="40vmin" />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="spinner-message">
-              {/* <audio src="/score.mp3" autoPlay loop /> */}
-              <div>
-                <h2>{this.congratsMessage()}</h2>
-              </div>
+            <audio src='/score.mp3' autoPlay loop />
+
+              <table className="table-head">
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="./mariocoin.png" height="40vmin" />
+                    </td>
+
+                    <td>
+                      <h2>TOTAL SCORE: {globalScore}</h2>
+                    </td>
+                    <td>
+                      <img src="./mariocoin.png" height="40vmin" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="spinner-message">
+                {/* <audio src="/score.mp3" autoPlay loop /> */}
+                <div>
+                  <h2>{this.congratsMessage()}</h2>
+                </div>
 
               <div className="char-grid">
                 {/* big character */}
