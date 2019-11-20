@@ -22,9 +22,9 @@ class App extends React.Component {
     this.state = {
       category: "",
       questionPackages: placeholderData,
-      step: 0,
+      step: 8,
       localScore: 0,
-      globalScore: 0,
+      globalScore: 9999999999,
       totalScore: this.localScore + this.globalScore,
       isLoaded: false,
       level: 1,
