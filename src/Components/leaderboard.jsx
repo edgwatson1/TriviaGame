@@ -37,14 +37,14 @@ const Leaderboard = () => {
                 </h1>
             <br />
             <div>
-                <label>Sort By:</label>{' '}
-                <select>
+                {/* <label>Sort By:</label>{' '} */}
+                {/* <select>
                     <option>Leader (highest first)</option>
                     <option>Leader (lowest first)</option>
                     <option disabled>---</option>
                     <option>Name (a-z)</option>
                     <option>Name (z-a)</option>
-                </select>
+                </select> */}
             </div>
             <br />
             <ol>

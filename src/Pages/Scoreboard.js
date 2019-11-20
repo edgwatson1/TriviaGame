@@ -135,7 +135,7 @@ class Scoreboard extends React.Component {
               </footer>
             </h1>
         </div>
-          );
+      );
     } else {
       return (
         <>
@@ -165,85 +165,85 @@ class Scoreboard extends React.Component {
                   <h2>{this.congratsMessage()}</h2>
                 </div>
 
-                <div className="char-grid">
-                  {/* big character */}
-                  <div className="big-pic big-char-row">
-                    <img
-                      className="big-pic-style"
-                      src={this.whoIsBig()}
-                      alt="current character"
-                    />
-                  </div>
-                  {/* small characters */}
-                  <div
-                    className={
-                      this.props.level === 1
-                        ? "toad small-char-row-invisible"
-                        : "toad small-char-row-faded"
-                    }
-                  >
-                    <img src="/level1-cropped.png" alt="toad" height="75vmin" />
-                  </div>
-                  <div
-                    className={
-                      this.props.level === 2
-                        ? "yoshi small-char-row-invisible"
-                        : "yoshi small-char-row-faded"
-                    }
-                  >
-                    <img src="/level2-cropped.png" alt="yoshi" height="75vmin" />
-                  </div>
-                  <div
-                    className={
-                      this.props.level === 3
-                        ? "bowser small-char-row-invisible"
-                        : "bowser small-char-row-faded"
-                    }
-                  >
-                    <img src="/level3-cropped.png" alt="bowser" height="75vmin" />
-                  </div>
-                  <div
-                    className={
-                      this.props.level === 4
-                        ? "princess small-char-row-invisible"
-                        : "princess small-char-row-faded"
-                    }
-                  >
-                    <img src="/level4-cropped.png" alt="princess" height="75vmin" />
-                  </div>
-                  <div
-                    className={
-                      this.props.level === 5
-                        ? "mario small-char-row-invisible"
-                        : "mario small-char-row-faded"
-                    }
-                  >
-                    <img src="/level5-cropped.png" alt="mario" height="75vmin" />
-                  </div>
+              <div className="char-grid">
+                {/* big character */}
+                <div className="big-pic big-char-row">
+                  <img
+                    className="big-pic-style"
+                    src={this.whoIsBig()}
+                    alt="current character"
+                  />
                 </div>
-
-                <div>
-                  <h2 className="qns-to-progress">
-                    {this.qnsToProgressMessage()}
-                  </h2>
+                {/* small characters */}
+                <div
+                  className={
+                    this.props.level === 1
+                      ? "toad small-char-row-invisible"
+                      : "toad small-char-row-faded"
+                  }
+                >
+                  <img src="/level1-cropped.png" alt="toad" height="75vmin" />
+                </div>
+                <div
+                  className={
+                    this.props.level === 2
+                      ? "yoshi small-char-row-invisible"
+                      : "yoshi small-char-row-faded"
+                  }
+                >
+                  <img src="/level2-cropped.png" alt="yoshi" height="75vmin" />
+                </div>
+                <div
+                  className={
+                    this.props.level === 3
+                      ? "bowser small-char-row-invisible"
+                      : "bowser small-char-row-faded"
+                  }
+                >
+                  <img src="/level3-cropped.png" alt="bowser" height="75vmin" />
+                </div>
+                <div
+                  className={
+                    this.props.level === 4
+                      ? "princess small-char-row-invisible"
+                      : "princess small-char-row-faded"
+                  }
+                >
+                  <img src="/level4-cropped.png" alt="princess" height="75vmin" />
+                </div>
+                <div
+                  className={
+                    this.props.level === 5
+                      ? "mario small-char-row-invisible"
+                      : "mario small-char-row-faded"
+                  }
+                >
+                  <img src="/level5-cropped.png" alt="mario" height="75vmin" />
                 </div>
               </div>
 
-              <div className="footer">
-                <Link to="/CategoryWheel">
-                  <button className="btn">
-                    <a href="/CategoryWheel">
-                      {" "}
-                      Play Again!
-                    </a>
-                  </button>
-                </Link>
+              <div>
+                <h2 className="qns-to-progress">
+                  {this.qnsToProgressMessage()}
+                </h2>
               </div>
             </div>
-          </>
-          );
-        }
-      };
+
+            <div className="footer">
+              <Link to="/CategoryWheel">
+                <button className="btn">
+                  <a href="/CategoryWheel">
+                    {" "}
+                    Play Again!
+                    </a>
+                </button>
+              </Link>
+            </div>
+          </div>
+        </>
+      );
     }
-    
-    export default Scoreboard;
+  };
+}
+
+export default Scoreboard;
